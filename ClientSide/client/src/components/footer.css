@@ -1,0 +1,13 @@
+.mainFooter {
+    background-color: #143059;
+}
+
+.row {
+    color: white;
+}
+
+.row > p {
+    text-align: center;
+    margin-left: 30%;
+    margin-top: 2%;
+}

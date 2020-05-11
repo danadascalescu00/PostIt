@@ -14,6 +14,8 @@ export const deleteButton = {
     background: 'royalblue',
     padding: '1em',
     margin: '1em',
+    borderRadius: '100px',
+    width: '20em',
   };
   
   export const logoutButton = {
@@ -27,9 +29,10 @@ export const deleteButton = {
   };
   
   export const registerButton = {
-    background: 'green',
+    background: 'black',
+    width: '17em',
+    borderRadius: '100px',
     padding: '1em',
-    margin: '1em',
   };
   
   export const homeButton = {
@@ -58,6 +61,7 @@ export const deleteButton = {
   
   export const inputStyle = {
     margin: '.5em',
+    width: '17em',
   };
   
   export default {

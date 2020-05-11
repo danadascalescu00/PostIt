@@ -12,6 +12,7 @@ import {
   loginButton,
   inputStyle,
   HeaderBar,
+  HeaderLogIn,
 } from '../components';
 import { register } from '../serviceWorker';
 
@@ -26,10 +27,9 @@ class Register extends Component {
     this.state = {
       username: '',
       password: '',
+      passwordConfirmation: '',
       messageFromServer: '',
-      showError: false,
-      registerError: false,
-      loginError: false,
+      showError: 0,
     };
   }
 
@@ -42,13 +42,16 @@ class Register extends Component {
   registerUser = async (e) => {
     e.preventDefault();
     const {
-        username, password
+        username, password, passwordConfirmation
     } = this.state;
-    if (username === '' || password === '') {
+
+    if (password != passwordConfirmation){
+      return
+    }
+
+    if (username === '' || password === '' || passwordConfirmation === '') {
       this.setState({
-        showError: true,
-        loginError: false,
-        registerError: true,
+        showError: "err_empty_entries",
       });
     } else {
       console.log(username, password)
@@ -60,18 +63,14 @@ class Register extends Component {
         this.setState({
           messageFromServer: response.data.message,
           showError: false,
-          loginError: false,
-          registerError: false,
         });
       } catch (error) {
-        console.error(error.response.data);
-        if (error.response.data === 'username or email already taken') {
-          this.setState({
-            showError: true,
-            loginError: true,
-            registerError: false,
-          });
-        }
+        console.error(error)
+        console.log(error.response)
+
+        this.setState({
+          showError: error.response.data.errorcode
+        })
       }
     }
   };
@@ -81,42 +80,73 @@ class Register extends Component {
     const {
       username,
       password,
+      passwordConfirmation,
       messageFromServer,
       showError,
-      loginError,
-      registerError,
     } = this.state;
 
     if (messageFromServer === '') {
       return (
         <div>
-          <HeaderBar title={title} />
+          <HeaderLogIn/>
+          <h3 className="login-subtitle">Sign up with username and password.</h3>   
+
           <form className="profile-form" onSubmit={this.registerUser}>
-            <TextField
-              style={inputStyle}
-              id="username"
-              label="username"
-              value={username}
-              onChange={this.handleChange('username')}
-              placeholder="Username"
-            />
-            <TextField
-              style={inputStyle}
-              id="password"
-              label="password"
-              value={password}
-              onChange={this.handleChange('password')}
-              placeholder="Password"
-              type="password"
-            />
-            <SubmitButtons buttonStyle={registerButton} buttonText="Register" />
+            <div>
+              <TextField
+                style={inputStyle}
+                id="username"
+                label="Username"
+                value={username}
+                onChange={this.handleChange('username')}
+                placeholder="Username"
+              />
+            </div>
+            <div>
+              <TextField
+                style={inputStyle}
+                id="password"
+                label="Password"
+                value={password}
+                onChange={this.handleChange('password')}
+                placeholder="Password"
+                type="password"
+              />
+            </div>
+            <div>
+              <TextField
+                style={inputStyle}
+                id="passwordConfirmation"
+                label="Confirm password"
+                value={passwordConfirmation}
+                onChange={this.handleChange('passwordConfirmation')}
+                placeholder="Password"
+                type="password"
+              />
+            </div>
+          <br/>
+          <SubmitButtons buttonStyle={registerButton} buttonText="Register" />
           </form>
-          {showError === true && registerError === true && (
+          <div>
+            <h5 className="footer-message">Already have an account?
+              <a href="/login"> Log In</a> 
+            </h5>
+          </div>
+          
+
+
+
+          {showError == "err_empty_entries" && (
             <div>
               <p>Username, password and email are required fields.</p>
             </div>
           )}
-          {showError === true && loginError === true && (
+          {showError == "err_unknown" && (
+            <div>
+              <p>Something went wrong. Please try again later.</p>
+            </div>
+          )}
+          {showError == "err_taken" && (
             <div>
               <p>
                 That username or email is already taken. Please choose another
@@ -129,7 +159,14 @@ class Register extends Component {
               />
             </div>
           )}
-          <LinkButtons buttonText="Go Home" buttonStyle={homeButton} link="/" />
+          {password !== passwordConfirmation && (
+            <div>
+              Passwords don't match.
+            </div>
+
+          )}
+
+
         </div>
       );
     }

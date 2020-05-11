@@ -20,6 +20,32 @@ const User = require('../models/User')
 
 const facebookPost = require('../facebookPost/postOnFacebook')
 
+/////////////
+function formatUsername(username){
+    //usernames are not case sensitive, lower it
+    formattedUsername = username.toLowerCase()
+
+    return formattedUsername
+}
+
+//creates the response, assuming success
+function createResponse(){
+    resp = {success: true}
+    return resp
+}
+
+//sets the error message
+function setResponseError(resp, err, errcode){
+    if (!errcode){
+        errcode = "err_unknown"
+    }
+    resp.success = false
+    resp.message = err
+    resp.errorcode = errcode
+}
+/////////////
+
+
 module.exports = function(multiPassport) {
 
     multiPassport.serializeUser(function(user, cb) {
@@ -41,21 +67,38 @@ module.exports = function(multiPassport) {
         session: false
     },
     function(req, _username, _password, cb) {
-        if (_username)
-            _username = _username.toLowerCase()
+        
+        //format the username according to our rules
+        _username = formatUsername(_username)
         
         process.nextTick(function() {
             User.findOne({username: _username}, function(err, user) {
-                if (err) 
-                    return cb(err)
+                //create the response
+                response = createResponse()
 
-                if (!user) 
-                    return cb(null, false, req.flash('loginMessage', 'No user found.')); 
-                
-                if (!user.validPassword(_password)) 
-                    return cb(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
-                
-                return cb(null, user);
+                //something went wrong getting the user
+                if (err) {
+                    setResponseError(response, err)
+                    return cb(response)
+                }
+
+                //we didn't find the user
+                if (!user) {
+                    setResponseError(response, "No user found.", "err_wrong_combo")
+                    return cb(response)
+                }
+
+                //we found the user, but the password was wrong
+                if (!user.validPassword(_password)){
+                    setResponseError(response, "Wrong password.", "err_wrong_combo")
+                    return cb(response)
+                }
+
+                //everything ok, return the user data
+                response.user = user
+
+                return cb(response)
+
             });
         })
     }));
@@ -67,33 +110,46 @@ module.exports = function(multiPassport) {
         session: false
     },
     function(req, _username, _password, cb) {
-        console.log("local-signup")
-        if (_username)
-            _username = _username.toLowerCase()
-        console.log(_username, _password)
+        //format the username according to our rules
+        _username = formatUsername(_username)
+
         process.nextTick(function() {
+            //create the response
+            response = createResponse()
+
             // if the user is not already logged in:
             if (!req.user) {
                 User.findOne({username: _username}, (error, result) => {
-                    if (error) {
-                        console.log('An error occured when checking if the username already exists')
-                        return cb(error)
+                    //something went wrong while checking if the username already exists
+                    if (error){
+                        setResponseError(response, "An error occured while checking if the username already exists")
+                        return cb(response)
                     }
-                    if (result) {
-                        return cb(null, false, req.flash('signupMessage', 'That email is already taken.'))
-                    } else {
-                        // can add a new user to database
-                        newUser = new User;
-                        newUser.username = _username,
-                        newUser.password = newUser.generateHash(_password)
-                        newUser.save((error) => {
-                            if (error) {
-                                console.log(`Failed to add the new user to database: ${newUserData}`)
-                                return cb(error)
-                            }
-                            return cb(null, newUser)
-                        })
+                    //the username already exists
+                    if (result){
+                        setResponseError(response, "That username is taken.", "err_taken")
+                        return cb(response)
                     }
+
+                    //everything ok, we can add the user to the database
+
+                    //create the user object
+                    newUser = new User
+                    newUser.username = _username,
+                    newUser.password = newUser.generateHash(_password)
+
+                    //save the user
+                    newUser.save((error) => {
+                        if (error){
+                            setResponseError(response, `Failed to add the new user to database: ${newUserData}`)
+                            return cb(response)
+                        }
+
+                        //all good, return success along with user information
+                        response.user = newUser
+                        return cb(response)
+                    })
+
                 })
             // if the user is logged in but has no local account...
             } else if (!req.user.username) {

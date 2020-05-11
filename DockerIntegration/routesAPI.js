@@ -8,7 +8,7 @@ const twitterPost = require('./twitterPost/postOnTwitter')
 const facebookPost = require('./facebookPost/postOnFacebook')
 
 var setCORSHeaders = function(res) {
-	  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,contenttype'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
@@ -65,73 +65,77 @@ module.exports = function(app, multiPassport) {
     }));
 
     app.post('/api/login', (req, res, next) => {
-      multiPassport.authenticate('local-login', (err, user, info) => {
-        if (err) {
-          console.error(`error ${err}`);
+      multiPassport.authenticate('local-login', (response) => {
+        console.error("----LOGIN----")
+        //we got no response, something went wrong
+        if (!response){
+          console.error("No response")
+          res.status(400).send({message: "No response"})
+          return
         }
-        if (info !== undefined) {
-          console.error(info.message);
-          if (info.message === 'bad username') {
-            res.status(401).send(info.message);
-          } else {
-            res.status(403).send(info.message);
-          }
-        } else {
-          console.log('userssss')
-          console.log(user)
-          // req.logIn(users, () => {
-           
-          const token = jwt.sign({ id: user._id }, jwtSecret.secret);
-          res.status(200).send({
-            auth: true,
-            token,
-            message: 'user found & logged in',
-          });
 
-          // });
+        //debugging
+        console.error("----------")
+        console.error(response)
+        console.error("----------")
+
+        //something went wrong, tell the user
+        if (!response.success) {
+          console.error(`error ${response.message}`)
+
+          res.status(400).send(response)
+          return
         }
+
+        //everything was ok, tell the user they are logged in
+        const token = jwt.sign({id: response.user._id}, jwtSecret.secret)
+        res.status(200).send({
+          auth: true,
+          token,
+          message: 'user found & logged in'
+        })
+
       })(req, res, next);
     });
 
     app.post('/api/register', (req, res, next) => {
-      // console.log(req)
-      console.log()
-      console.log(req.body)
-      multiPassport.authenticate('local-signup', (err, user, info) => {
-        if (err) {
-          console.error(err);
+      multiPassport.authenticate('local-signup', (response) => {
+        console.error("----REGISTER----")
+        //we got no response, something went wrong
+        if (!response){
+          console.error("No response")
+          res.status(400).send({message: "No response"})
+          return
         }
-        if (info !== undefined) {
-          // console.log(req)
-          console.error(info.message);
-          res.status(403).send(info.message);
-        } else {
-          // eslint-disable-next-line no-unused-vars
-          console.log('userssss')
-          console.log(user)
-          req.logIn(user, error => {
+
+        //debugging
+        console.error("----------")
+        console.error(response)
+        console.error("----------")
+
+        //something went wrong, tell the user
+        if (!response.success) {
+          console.error(`error ${response.message}`)
+
+          res.status(400).send(response)
+          return
+        }
+
+        //everything ok, what's this?
+
+        req.logIn(response.user, error => {
+          const data = {
+            username: response.user.username,
+          };
+          User.findOne({
+            username: data.username,
+          }).then(user => {
             console.log(user);
-            const data = {
-              username: user.username,
-            };
-            console.log(data);
-            User.findOne({
-              username: data.username,
-            }).then(user => {
-              console.log(user);
-              // user
-              //   .findOneAndUpdate({
-              //     first_name: data.first_name,
-              //     last_name: data.last_name,
-              //     email: data.email,
-              //   })
-              //   .then(() => {
-                  console.log('user created in db');
-                  res.status(200).send({ message: 'user created' });
-              //   });
-            });
+            console.log('user created in db');
+            res.status(200).send({ message: 'user created' });
           });
-        }
+        });
+
       })(req, res, next);
     });
     

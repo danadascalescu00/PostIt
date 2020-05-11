@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Redirect,Switch, Route} from 'react-router-dom';
+import 'react-scroll-parallax';
+import './containers/App.css';
 
-import { Switch, Route } from 'react-router-dom';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Profile from './containers/Profile';
 import Register from './containers/Register';
+import NotFoundPage from './containers/NotFoundPage.jsx';
+// import ContactUs from './containers/contactUs.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import UpdateProfile from './containers/UpdateProfile';
 // import ForgotPassword from './containers/ForgotPassword';
@@ -18,6 +22,8 @@ const Routes = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/userProfile" component={Profile} />
+      {/* <Route exact path = "/contactUs" exact component = {ContactUs} /> */}
+      <Route exact path="*" component = {NotFoundPage} />
       {/* <Route exact path="/reset/:token" component={ResetPassword} />
       <Route exact path="/forgotPassword" component={ForgotPassword} />
       <Route exact path="/updateUser/:username" component={UpdateProfile} />
