@@ -4,10 +4,12 @@
 
 .row {
     color: white;
+    width:100%;
+    text-align: center;
 }
 
-.row > p {
+.row p {
     text-align: center;
-    margin-left: 30%;
+    margin-left: 35%;
     margin-top: 2%;
 }

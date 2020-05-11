@@ -30,8 +30,8 @@ const navOptions = [
   ];
 
 const styleImage = {
-  backgroundImage: `url(${desktopImage})`,
-  backgroundPosition: "0%"
+  // backgroundImage: `url(${desktopImage})`,
+    
 }
 
 const laptopStyle = {
@@ -45,7 +45,7 @@ const laptopStyle = {
 const agentStyle = {
   position: "relative",
   width: "3%",
-  marginTop: "15%",
+  top: "13em",
   left:"7%",
   zIndex: "8"
 }
@@ -93,32 +93,32 @@ const pagesStyle = {
 const glassStyle = {
   position: "relative",
   width: "13%",
-  marginTop: "-39%",
-  left:"25%",
+  top: "-24em",
+  left:"3em",
   zIndex: "4",
 } 
 
 const checkedStyle = {
   position: "relative",
   width: "5.5%",
-  marginTop: "-16%",
-  left:"2.5%",
+  left:"-29em",
+  top: "-12em",
   zIndex: "4",
 } 
 
 const phoneStyle = {
   position: "relative",
   width: "12%",
-  marginTop: "-5%",
-  left:"-2%",
+  left: "-36em",
+  top: "-8em",
   zIndex: "4",
 } 
 
 const graphStyle = {
   position: "relative",
   width: "9%",
-  marginTop: "-54%",
-  left:"18%",
+  top: "-37em",
+  left:"-10em",
   zIndex: "4",
 }
 

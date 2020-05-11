@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Redirect,Switch, Route} from 'react-router-dom';
 import 'react-scroll-parallax';
@@ -9,7 +10,6 @@ import Profile from './containers/Profile';
 import Register from './containers/Register';
 import NotFoundPage from './containers/NotFoundPage.jsx';
 // import ContactUs from './containers/contactUs.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
 // import UpdateProfile from './containers/UpdateProfile';
 // import ForgotPassword from './containers/ForgotPassword';
 // import ResetPassword from './containers/ResetPassword';
