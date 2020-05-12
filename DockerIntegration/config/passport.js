@@ -213,11 +213,6 @@ module.exports = function(multiPassport) {
         passReqToCallback: true
     },
     function (req, token, tokenSecret, profile, cb) {
-        console.log(token);
-        console.log("______ AM PRIMIT ______");
-        console.log(tokenSecret)
-        console.log(req)
-        console.log('*********************************************')
         const userId = JSON.parse(Object.values(req.sessionStore.sessions)[0]).passport.user;
         User.findByIdAndUpdate({_id: userId}, {
             twitterId: profile.id,

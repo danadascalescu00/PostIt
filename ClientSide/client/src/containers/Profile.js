@@ -54,9 +54,33 @@ class Profile extends Component {
       isLoading: true,
       deleted: false,
       error: false,
-      show: false
+      show: false,
+      postReddit: false,
+      postTwitter: false,
+      postFacebook: false,
+      redditLoggedIn: false,
+      twitterLoggedIn: false,
+      facebookLoggedIn: false,
     };
-    
+
+    this.postHandler = this.postHandler.bind(this);
+  }
+  isLoggedIn(status) {
+    if (status == 'logged in')
+      return true
+    else if (status == 'not logged in')
+      return false
+    console.log('an error occured')
+    return false
+  }
+
+  postHandler = (socialMedia, value) => {
+    if (socialMedia === 'reddit')
+      this.setState({postReddit: value})
+    else if (socialMedia === 'twitter')
+      this.setState({postTwitter: value})
+    else if (socialMedia === 'facebook')
+      this.setState({postFacebook: value})
   }
 
   async componentDidMount() {
@@ -67,10 +91,7 @@ class Profile extends Component {
         params: { username },
       },
     } = this.props;
-    console.log('params')
-    console.log('username')
-    console.log(username)
-    console.log(this.props)
+    
     if (accessString == null) {
       this.setState({
         isLoading: false,
@@ -84,12 +105,25 @@ class Profile extends Component {
           },
           headers: { authorization: `JWT ${accessString}` },
         });
+
+        const redditActions = this.isLoggedIn(response.data.reddit)
+        const twitterActions = this.isLoggedIn(response.data.twitter)
+        const facebookActions = this.isLoggedIn(response.data.facebook)
+
         this.setState({
           username: response.data.username,
           password: response.data.password,
           isLoading: false,
           error: false,
+          postReddit: redditActions,
+          postTwitter: twitterActions,
+          postFacebook: facebookActions,
+          redditLoggedIn: redditActions,
+          twitterLoggedIn: twitterActions,
+          facebookLoggedIn: facebookActions,
         });
+        console.log('here')
+        console.log(response.data)
       } catch (error) {
         console.error(error);
         this.setState({
@@ -100,12 +134,12 @@ class Profile extends Component {
   }
 
   textViewChanged = (value) => {
-		this.setState({content: value})
+    this.setState({content: value})
   }
   
   textViewChangedTitle = (value) => {
-		this.setState({title: value})
-	}
+    this.setState({title: value})
+  }
   
   componentWillUnmount() { this._isMounted = false }
 
@@ -148,7 +182,13 @@ class Profile extends Component {
       error,
       isLoading,
       deleted,
-      show
+      show,
+      postReddit,
+      postTwitter,
+      postFacebook,
+      redditLoggedIn,
+      twitterLoggedIn,
+      facebookLoggedIn, 
     } = this.state;
 
     if (error) {
@@ -220,12 +260,31 @@ class Profile extends Component {
             <Modal.Body id="postModalBody">
 
               <br /> <br /> <br />
-              <PostField change={this.textViewChanged} title={this.textViewChangedTitle}/>
-              <div className='modalPreview'> <br /> <br />Preview </div>
+              <PostField
+                canPostReddit={postReddit}
+                canPostTwitter={postTwitter}
+                canPostFacebook={this.state.postFacebook}
+                change={this.textViewChanged} 
+                title={this.textViewChangedTitle}
+              />
+              <div className='modalPreview'> <br /> <br /><i>Tap on the cards you want to post</i></div>
               <div className="cards">
-            <FacebookCard content={this.state.content} />
-            <RedditCard   content={this.state.content} title={this.state.title}/>
-            <TwitterCard  content={this.state.content}/>
+                <FacebookCard 
+                  loggedIn={facebookLoggedIn}
+                  content={this.state.content} 
+                  handlePost={this.postHandler}
+                />
+                <RedditCard 
+                  title={this.state.title}
+                  loggedIn={redditLoggedIn}
+                  content={this.state.content} 
+                  handlePost={this.postHandler}
+                />
+                <TwitterCard 
+                  loggedIn={twitterLoggedIn}
+                  content={this.state.content}
+                  handlePost={this.postHandler}
+                />
               </div>
             </Modal.Body>
           </Modal>

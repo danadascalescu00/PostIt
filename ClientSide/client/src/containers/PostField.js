@@ -16,7 +16,7 @@ class PostField extends Component {
 		this.state = {
 			content: '',
 			error: false,
-			isLoading: false
+			isLoading: false,
 		}
 	}
 
@@ -30,37 +30,50 @@ class PostField extends Component {
 		this.props.title(value)
 	}
 
-	postContent = async () => {
+	postContent = async (canPostReddit, canPostTwitter, canPostFacebook) => {
+		
 		const accessString = localStorage.getItem('JWT');
 		this.setState({
 			isLoading: true,
 		})
 		if (accessString == null) {
-      this.setState({
-        error: true,  
-      });
-    } else {
+			this.setState({
+				error: true,  
+			});
+		} else {
 			try {
-				const response = await axios.post(`http://${envDomain}/post/twitter`,  
-				{ postContent: this.state.content },
+				const response = await axios.post(`http://${envDomain}/post`,  
+				{ 
+					// main content of the post
+					postTitle: this.state.title,
+					postContent: this.state.content,
+
+					// metadata about the post
+					canPostReddit: canPostReddit,
+					canPostTwitter: canPostTwitter,
+					canPostFacebook: canPostFacebook,
+				},
 				{	
 					headers: { 
 						authorization: `JWT ${accessString}`,
 						'Content-Type': 'application/json',
 					}
 				});
+
+				console.log(response.data.message)
 				if (response.data.message === 'posted') {
-					console.log("ok")
 					this.setState({
 						isLoading: false,
 						error: false,
-					});
+					})
+				} else {
+					throw new Error('Content not posted...');
 				}
 			} catch (error) {
 				console.error(error);
 				this.setState({
 					error: true,
-				});
+				})
 			}
 		}
 	}
@@ -91,12 +104,16 @@ class PostField extends Component {
 						this.state.isLoading
 						? <img src={loading} className="postButton" height='45px' width='45px' alt="Check" />
 						: <Button
-								className="postButton"
-								variant="contained"
-								color="primary"
-								onClick={this.postContent}>
-								Post
-							</Button>
+							className="postButton"
+							variant="contained"
+							color="primary"
+							onClick={()=> this.postContent(
+								this.props.canPostReddit,
+								this.props.canPostTwitter,
+								this.props.canPostFacebook,
+							)}>
+							Post
+						</Button>
 					}
 				</div>
 			</div>

@@ -13,10 +13,10 @@ exports.postOnTwitter = async (token, tokenSecret, tweetContent, cb) => {
     });
 
     client.post('statuses/update', {status: tweetContent},  function(error, tweet, response) {
-        if (error) throw error
-        console.log(tweet)
+        if (error) console.log(error)
+        // console.log(tweet)
         delete this
         cb(response)
-    });
+    }).catch(error => cb(error));
       
 }

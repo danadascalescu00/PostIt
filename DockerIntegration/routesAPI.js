@@ -4,6 +4,7 @@ const User = require('./models/User')
 const jwt = require('jsonwebtoken')
 const jwtSecret = require('./config/jwtConfig')
 
+const redditPost = require('./redditPost/postOnReddit')
 const twitterPost = require('./twitterPost/postOnTwitter')
 const facebookPost = require('./facebookPost/postOnFacebook')
 
@@ -139,6 +140,12 @@ module.exports = function(app, multiPassport) {
       })(req, res, next);
     });
     
+    function getLoginStatus(id) {
+      if (id === undefined)
+        return 'not logged in'
+      return 'logged in'
+    }
+
     app.get('/api/user', (req, res, next) => {
       multiPassport.authenticate('jwt', { session: false }, (err, user, info) => {
         if (err) {
@@ -163,36 +170,104 @@ module.exports = function(app, multiPassport) {
               username: userInfo.username,
               password: userInfo.password,
               message: 'user found in db',
+              reddit: getLoginStatus(userInfo.redditId),
+              twitter: getLoginStatus(userInfo.twitterId),
+              facebook: getLoginStatus(userInfo.facebookId),
             });
           } else {
             console.error('no user exists in db with that username');
             res.status(401).send('no user exists in db with that username');
           }
         });
-        // } else {
-        //   console.error('jwt id and username do not match');
-        //   res.status(403).send('username and jwt token do not match');
-        // }
       })(req, res, next);
     });
 
-    // app.get('/logout',
-    // function(req, res){
-    //     req.logout();
-    //     res.redirect('/');
-    // });
+   
 
-    // app.get('/profile',
-    // require('connect-ensure-login').ensureLoggedIn(),
-    // function(req, res){
-    //     // console.log(req.user)
-    //     User.findById({_id: req.user.id})
-    //     .then(user => res.render('profile', { item: user, user: req.user }))
-    //     .catch(err => res.status(404).json({ msg: 'No items found' }));
-    //     // res.render('profile', { 
-    //     // user: req.user,
-    //     // facebook_user: req.facebook_user });
-    // });
+
+    // post on everythinh service
+    app.post('/post', (req, res, next) => {
+      multiPassport.authenticate('jwt', { session: false }, (err, user, info) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log('user:')
+        console.log(user)
+        
+        if (info !== undefined) {
+          console.log(info.message);
+          res.status(401).send(info.message);
+          next()
+        }
+
+        const reddit = () => { 
+          return new Promise((resolve, _) => {
+            redditPost.postOnReddit(
+              user.redditToken,
+              req.body.postTitle,
+              req.body.postContent, 
+              (result) => {
+                console.log(result)
+                res.status(200).send({
+                  message: 'posted',
+                });
+              })
+          })
+        }
+
+        const twitter = () => { 
+          return new Promise((resolve, _) => {
+            twitterPost.postOnTwitter(
+              user.twitterToken,
+              user.twitterTokenSecret,
+              req.body.postContent, 
+              () => {
+                resolve({
+                  message: 'posted on twitter',
+                });
+              })
+          })
+        }
+
+        const facebook = () => { 
+          return new Promise((resolve, _) => {
+            facebookPost.postMessageOnPages(
+              user.facebookPagesList,
+              req.body.postContent, 
+              () => {
+                resolve({
+                  message: 'posted on facebook',
+                });
+              })
+          })
+        }
+
+        socialMedias = []
+        if (req.body.canPostReddit == true)
+          socialMedias.push(reddit())
+        if (req.body.canPostTwitter == true)
+          socialMedias.push(twitter())
+        if (req.body.canPostFacebook == true)
+          socialMedias.push(facebook())
+        
+        Promise
+          .all(socialMedias)
+          .then((socialMediasResponse) => {
+            console.log(socialMediasResponse)
+            res.status(200).send({
+              message: 'posted',
+            })
+          })
+          .catch(error => {
+            console.log(error)
+            res.send({
+              message: 'an error occured, not posted'
+            })
+          })
+
+      })(req, res, next);
+    })
+
 
     // facebook service
     app.get('/login/facebook',
@@ -208,24 +283,14 @@ module.exports = function(app, multiPassport) {
         res.redirect('http://localhost:3000/userProfile')
     })
 
-    // app.post('/post/facebook', 
-    // require('connect-ensure-login').ensureLoggedIn(),
-    // function(req, res) {     
-    //     facebookPost.postMessageOnPages(
-    //         req.user.facebookPagesList,
-    //         req.body.postContent, (result) => {
-    //             res.redirect('/profile')
-    //         })
-    // })
+    
     
     app.post('/post/facebook', (req, res, next) => {
       multiPassport.authenticate('jwt', { session: false }, (err, user, info) => {
         if (err) {
           console.log(err);
         }
-        console.log('user:')
-        // console.log(user)
-        // const userId = JSON.parse(Object.values(req.sessionStore.sessions)[0]).passport.user
+
         if (info !== undefined) {
           console.log(info.message);
           res.status(401).send(info.message);
@@ -241,73 +306,10 @@ module.exports = function(app, multiPassport) {
               message: 'posted',
             });
           })
+
       })(req, res, next);
     });
-        // User.findOne({
-        //   _id: user._id,
-        // }).then((userInfo) => {
-        //   if (userInfo != null) {
-        //     console.log('user found in db from findUsers');
-        //     console.log("user is")
-        //     console.log(userInfo)
-        //     res.status(200).send({
-        //       auth: true,
-        //       username: userInfo.username,
-        //       password: userInfo.password,
-        //       message: 'user found in db',
-        //     });
-        //   } else {
-        //     console.error('no user exists in db with that username');
-        //     res.status(401).send('no user exists in db with that username');
-        //   }
-        // });
-        // } else {
-        //   console.error('jwt id and username do not match');
-        //   res.status(403).send('username and jwt token do not match');
-        // }
-      
-    // multiPassport.authenticate('jwt', { session: false }, (err, user, info) => {
-    //   if (err) {
-    //     console.log("errorrrrr")
-    //     console.log(err);
-    //   }
-    //   console.log(req.headers)
-    //   console.log('suer')
-    //   console.log(user)
-    //   console.log('user')
-    //   console.log(typeof req.body)
-
-    //   console.log(req.body)
-    //   console.log(Object.values(req.body)[0].postContent)
-    //   const userId = JSON.parse(Object.values(req.sessionStore.sessions)[0]).passport.user
-    //   if (info !== undefined) {
-    //     console.log("info")
-    //     console.log(info)
-    //     console.log(info.message);
-    //     res.status(401).send(info.message);
-    //   } 
-
-    //   // User.findOne({
-    //   //   _id: userId,
-    //   // }).then((userInfo) => {
-    //   //   if (userInfo != null) {
-    //   //     console.log('user found in db from findUsers');
-
-    //   //     facebookPost.postMessageOnPages(
-    //   //       userInfo.facebookPagesList,
-    //   //       req.body.postContent, 
-    //   //       (result) => {
-    //   //         res.status(200).send({
-    //   //           message: 'posted',
-    //   //         });
-    //   //       })
         
-    //   //     } else {
-    //   //     console.error('no user exists in db with that username');
-    //   //     res.status(401).send('no user exists in db with that username');
-    //   //   }
-    // }) (req, res, next) });
-
 
     // twitter service
     app.get('/login/twitter',
@@ -382,4 +384,17 @@ module.exports = function(app, multiPassport) {
           })
     })
 
+    app.post('/post/reddit', 
+    require('connect-ensure-login').ensureLoggedIn(),
+    function(req, res) {     
+      redditPost.postMessageOnPages(
+          req.body.postTitle,
+          req.body.postContent, 
+          (result) => {
+            console.log(result)
+            res.status(200).send({
+              message: 'posted',
+            });
+          })
+    })
 }

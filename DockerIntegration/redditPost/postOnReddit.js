@@ -1,26 +1,27 @@
-const snoowrap = require('snoowrap')
+const request = require('request')
 
-// Create a new snoowrap requester with OAuth credentials.
+const KIND = 'self'
+const subreddit = 'test'
+const PostURL = 'https://oauth.reddit.com/api/submit'
 
 
-// Submitting text to a subreddit
+exports.postOnReddit = (accessToken, title, message, cb) => {
 
+    headers = {
+        'User-Agent': 'text/plain',
+        'Authorization': `bearer ${accessToken}`
+    }
+        
+    body = `kind=${KIND}&sr=${subreddit}&title=${title}&text=${message}`
 
-exports.postMessageOnReddit = (accessToken, message, cb) => {
+    requestInfo = {
+        headers: headers, 
+        url: PostURL, 
+        body: body
+    }
 
-    const r = new snoowrap({
-        userAgent: 'helpful poster',
-        clientId: '0ojMzPpxLoCkSA',
-        clientSecret: 'Su6skWQoqGy4k3a-S9bh93LXR_w',
-        refreshToken: '465515612250-Q4mneitsYJkYcrwsM4-SkGLmbV4'
+    request.post(requestInfo, function(error, response, body) {
+        if (error) console.log(error)
+        cb(message)
     });
-
-    r.getSubreddit('test').submitSelfpost(
-        {title: 'Test posted with node2', 
-        text: 'Hello world2!'}
-    ).then(result => {
-        cb(result)
-    })
 }
-
-  
