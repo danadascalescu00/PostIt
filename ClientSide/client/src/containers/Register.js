@@ -173,7 +173,7 @@ class Register extends Component {
     if (messageFromServer === 'user created') {
       return (
         <div>
-          <HeaderBar title={title} />
+          <HeaderLogIn/>
           <h3>User successfully registered!</h3>
           <LinkButtons
             buttonText="Go Login"
