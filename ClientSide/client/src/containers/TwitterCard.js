@@ -6,8 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './TwitterCard.css'
-import footer from './TwitterFooter.png'
-import twitterIcon from './twitterIcon.png'
+import footer from './Images/TwitterFooter.png'
+import twitterIcon from './Images/twitterIcon.png'
 
 const useStyles = makeStyles({
   root: {

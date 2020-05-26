@@ -65,12 +65,15 @@ class Profile extends Component {
 
     this.postHandler = this.postHandler.bind(this);
   }
+
   isLoggedIn(status) {
+    
     if (status == 'logged in')
       return true
     else if (status == 'not logged in')
       return false
     console.log('an error occured')
+
     return false
   }
 

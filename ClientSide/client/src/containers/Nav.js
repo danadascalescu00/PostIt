@@ -1,7 +1,6 @@
 import React from 'react';
-import Popup from 'reactjs-popup';
 import './App.css';
-import logo from './logo.png';
+import logo from './Images/logo.png';
  
 const logoStyle = {
     width: "56%",

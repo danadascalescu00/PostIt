@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import axios from 'axios'
 import './PostField.css'
-import loading from './loading2.gif'
+import loading from './Images/loading2.gif'
 
 
 const envDomain = 'localhost'

@@ -6,10 +6,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './RedditCard.css'
-import downvote from './downvoteReddit.png'
-import upvote from './upvoteReddit.png'
-import comment from './CommentIconReddit.png'
-import footer from './RedditStuff.png'
+import downvote from './Images/downvoteReddit.png'
+import upvote from './Images/upvoteReddit.png'
+import comment from './Images/CommentIconReddit.png'
+import footer from './Images/RedditStuff.png'
+
 const useStyles = makeStyles({
   root: {
     minWidth: 100,
