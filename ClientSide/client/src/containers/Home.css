@@ -25,35 +25,6 @@
     padding: 10px 50px 10px;
   }
 
-  @media (max-width: 1700px){
-    .firstContainer {
-        left: 65%;
-        top: -34em;
-    }
-  }
-
-  @media (max-width: 1500px){
-    .firstContainer {
-        left: 65%;
-        top: -28em;
-    }
-  }
-
-  @media (max-width: 1140px){
-    
-  }
-
-  @media (min-width: 650px ) {
-    .HomePage {
-        background-position: center center;
-    }
-
-    .HomePageContent {
-        align-items: flex-around;
-        justify-content: center;
-    }
-}
-
 
 
 .myContainer {
@@ -186,3 +157,92 @@
     color : #3f5eab;
     padding-top: 4.5%;
 }
+
+@media (max-width: 1700px){
+    .firstContainer {
+        left: 65%;
+        top: -34em;
+    }
+  }
+
+  @media (max-width: 1500px){
+    .firstContainer {
+        left: 65%;
+        top: -28em;
+    }
+  }
+
+  @media (max-width: 1140px){
+    .firstContainer {
+        top:-18em;
+        left: 60%;
+        scroll-margin-right: 0 !important;
+    }
+  }
+
+  @media (max-width: 1140px){
+    .firstContainer {
+        top:-18em;
+        left: 60%;
+        scroll-margin-right: 0 !important;
+    }
+  }
+
+
+  @media (max-width: 650px ) {
+    .HomePage {
+        background-position: center center;
+    }
+
+    .HomePageContent {
+        align-items: flex-around;
+        justify-content: center;
+    }
+
+    .container2Columns.img{
+        display:none;
+    }
+
+    .container2Columns{
+        width: 80% ;
+    }
+
+    .container2Columns h2{
+        font-size: larger;
+        text-align: center;
+    }
+    
+    .container2Columns p{
+        font-size: medium ;
+    }
+
+    .flexContainer{
+        flex-direction: column;
+    }
+
+    .container3Columns{
+        width: 80%;
+        text-align: center;
+    }
+
+    .background{
+        display: none;
+    }
+
+    .firstContainer {
+        top: 0em;
+        left: 17%;
+        align-self: center;
+        width: 70%;
+        scroll-margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 530){
+    .firstContainer {
+        top: 18em;
+        left: 15%;
+        
+    }
+  }
+

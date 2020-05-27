@@ -21,7 +21,8 @@ const iconsStyle = {
   width: "70%",
   
   position: "relative",
-  left: "-20%"
+  left: "-20%",
+  maxHeight: "100vh"
 }
 
 
@@ -55,7 +56,12 @@ function Home() {
                   <p> social media sites, BI Service and ML </p>
                   <p> Insights for everyone in your organisation.</p>
                 </div>
-                <Button type="button" buttonStyle="my--btn--primary--solid " buttonSize="my--btn--large">GET STARTED</Button>
+                <a href={"/register"}>
+                  <Button 
+                  type="button" 
+                  buttonStyle="my--btn--primary--solid " 
+                  buttonSize="my--btn--large">GET STARTED</Button>
+                </a>
               </div>
             </div>
 
@@ -95,8 +101,8 @@ function Home() {
                 your top-performing content just in one platform.
             </p>
           </div>
-          <div className="container2Columns">
-            <img src={blob}/>
+          <div className="container2Columns img">
+            <img src={blob} alt="blob"/>
           </div>
         </div>
 
