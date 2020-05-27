@@ -36,6 +36,7 @@ function Nav({items}) {
                         }
                         case "Contact Us":{
                             path = ""
+                            break;
                         }
                         default:{
                             path = "/" + item.option.replace(/\s/g, '');
