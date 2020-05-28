@@ -19,9 +19,10 @@ function Nav({items}) {
         <div className = "navbar navbar-light">
             <nav className = "navbar justify-content-start">
                 <a href="/">
-                    <img src = {logo} alt = "Logo" style = {logoStyle}/>
+                    <img className="logoPostit" src = {logo} alt = "Logo" style = {logoStyle}/>
                 </a>
             </nav>
+            
             <nav className = "nav justify-content-end">
                 {items.map( item => {
                     let path;
@@ -40,7 +41,7 @@ function Nav({items}) {
                         }
                         default:{
                             path = "/" + item.option.replace(/\s/g, '');
-                            break
+                            break;
                         }
                     }
                     return <a className = "nav-link active"  href = {path} style = {navLinkStyle}>
