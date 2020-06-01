@@ -21,8 +21,5 @@ docker-compose build
 
 the magic command:
 ```
-docker-compose down && 
-docker-compose build && 
-docker-compose up -d && 
-docker attach docker-node-mongo
+docker-compose down && docker-compose build && docker-compose up -d && docker attach docker-node-mongo
 ```

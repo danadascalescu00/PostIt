@@ -14,6 +14,7 @@ import PostField from './PostField';
 import './Profile.css'
 import FacebookCard from './FacebookCard'
 import RedditCard from './RedditCard'
+import Avatar from 'react-avatar'
 import TwitterCard from './TwitterCard'
 import SamplePreview from './SamplePreview'
 
@@ -23,7 +24,8 @@ import {
   updateButton,
   loginButton,
   logoutButton,
-  HeaderBar,
+  HeaderDash,
+  HeaderLogIn,
   linkStyle,
   forgotButton,
 } from '../components';
@@ -35,9 +37,7 @@ const loading = {
   fontSize: '24px',
 };
 
-const title = {
-  pageTitle: 'User Profile Screen',
-};
+
 
 class Profile extends Component {
 
@@ -78,12 +78,12 @@ class Profile extends Component {
   }
 
   postHandler = (socialMedia, value) => {
-    if (socialMedia === 'reddit')
-      this.setState({postReddit: value})
+    if (socialMedia === 'facebook')
+      this.setState({postFacebook: value})
     else if (socialMedia === 'twitter')
       this.setState({postTwitter: value})
-    else if (socialMedia === 'facebook')
-      this.setState({postFacebook: value})
+    else if (socialMedia === 'reddit')
+      this.setState({postReddit: value})
   }
 
   async componentDidMount() {
@@ -94,11 +94,11 @@ class Profile extends Component {
         params: { username },
       },
     } = this.props;
-    
+
     if (accessString == null) {
       this.setState({
         isLoading: false,
-        error: true,  
+        error: true,
       });
     } else {
       try {
@@ -125,7 +125,7 @@ class Profile extends Component {
           twitterLoggedIn: twitterActions,
           facebookLoggedIn: facebookActions,
         });
-        console.log('here')
+        console.log('here_____')
         console.log(response.data)
       } catch (error) {
         console.error(error);
@@ -162,15 +162,17 @@ class Profile extends Component {
 
   logout = async (e) => {
     e.preventDefault();
-    
+
     const accessString = localStorage.getItem('JWT');
     try {
       const response = await axios.get(`http://${envDomain}/api/logout`, {
         headers: { authorization: `JWT ${accessString}` },
       });
+      window.location.href='/';
       console.log("successfull logout")
       localStorage.removeItem('JWT');
     } catch (error) {
+      console.log("error to logout")
       console.error(error);
       this.setState({
         error: true,
@@ -197,7 +199,7 @@ class Profile extends Component {
     if (error) {
       return (
         <div>
-          <HeaderBar title={title} />
+          <HeaderDash/>
           <div style={loading}>
             Problem fetching user data. Please login again.
           </div>
@@ -212,7 +214,12 @@ class Profile extends Component {
     if (isLoading) {
       return (
         <div>
-          <HeaderBar title={title} />
+          <HeaderDash
+          loginWithFacebook={this.loginFacebook}
+          loginWithTwitter={this.loginTwitter}
+          loginWithReddit={this.loginReddit}
+          logOut={this.logout}
+          />
           <div style={loading}>Loading User Data...</div>
         </div>
       );
@@ -223,44 +230,22 @@ class Profile extends Component {
 
     return (
       <div>
-        <HeaderBar title={title} />
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell>User Name</TableCell>
-              <TableCell>{username}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Password</TableCell>
-              <TableCell style={{ WebkitTextSecurity: 'disc' }}>
-                {password}
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <HeaderDash
+          loggedFacebook={postFacebook}
+          loggedReddit={postReddit}
+          loggedTwitter={postTwitter}
+          loginWithFacebook={this.loginFacebook}
+          loginWithTwitter={this.loginTwitter}
+          loginWithReddit={this.loginReddit}
+          logOut={this.logout}/>
+
         <>
           
-          <Button 
-          variant="contained"
-          color="primary"
-          onClick={this.handleModal}
-          >
+          <h2>
             Create a post
-          </Button>
+          </h2>
 
           
-          <Modal
-            className="postModal"
-            show={show}
-            centered={true}
-            onHide={() => this.setState({show: false})}
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="postModalTitle">
-                <center>Create a new post</center>
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body id="postModalBody">
 
               <br /> <br /> <br />
               <PostField
@@ -272,68 +257,32 @@ class Profile extends Component {
               />
               <div className='modalPreview'> <br /> <br /><i>Tap on the cards you want to post</i></div>
               <div className="cards">
-                <FacebookCard 
+                <FacebookCard
+                  username={this.state.username}
                   loggedIn={facebookLoggedIn}
                   content={this.state.content} 
                   handlePost={this.postHandler}
                 />
-                <RedditCard 
+                <RedditCard
+                  username={this.state.username}
                   title={this.state.title}
                   loggedIn={redditLoggedIn}
                   content={this.state.content} 
                   handlePost={this.postHandler}
                 />
-                <TwitterCard 
+                <TwitterCard
+                  username={this.state.username}
                   loggedIn={twitterLoggedIn}
                   content={this.state.content}
                   handlePost={this.postHandler}
                 />
               </div>
-            </Modal.Body>
-          </Modal>
-        </>
-        {/* <Button
-          style={deleteButton}
-          variant="contained"
-          color="primary"
-          onClick={this.deleteUser}
-        >
-          Delete User
-        </Button>
-        <LinkButtons
-          buttonStyle={updateButton}
-          buttonText="Update User"
-          link={`/updateUser/${username}`}
-        />
-        <LinkButtons
-          buttonStyle={forgotButton}
-          buttonText="Update Password"
-          link={`/updatePassword/${username}`}
-        /> */}
 
-        {/* <Button><a href=`http://${envDomain}/login/facebook`>Login with Facebook</a></Button> */}
-        <Button
-          onClick={this.loginFacebook}>
-          Login with Facebook
-        </Button>
-        <Button
-          onClick={this.loginReddit}>
-          Login with Reddit
-        </Button>
-        <Button
-          onClick={this.loginTwitter}>
-          Login with Twitter
-        </Button>
-        <Button
-          style={logoutButton}
-          variant="contained"
-          color="primary"
-          onClick={this.logout}
-        >
-          <Link style={linkStyle} to="/">
-            Logout
-          </Link>
-        </Button>
+
+        </>
+        <br /> <br /> <br />
+
+
       </div>
     );
   }

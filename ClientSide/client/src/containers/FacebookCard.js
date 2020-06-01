@@ -8,6 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import facebookIcon from './Images/facebookIcon1.png'
 import './FacebookCard.css'
 
+function capitalize_Words(str)
+{
+  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 const useStyles = makeStyles({
   root: {
     minWidth: 100,
@@ -74,7 +79,7 @@ export default function FacebookCard(props) {
           style={{borderRadius: '20px', transform: 'translateY(20%)'}} 
         />
         <div className='fbProfile'>
-          <div><b>Andrei Liviu</b></div>
+          <div><b>{capitalize_Words(props.username)}</b></div>
           <div style={{fontSize: 'small', color: 'grey'}}>Just now</div>
         </div>
       </div>

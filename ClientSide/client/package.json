@@ -11,12 +11,14 @@
     "bootstrap": "^4.4.1",
     "material-ui-password-field": "^2.1.1",
     "react": "^16.13.1",
+    "react-avatar": "^3.9.6",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-scroll-parallax": "^2.3.2",
-    "reactjs-popup": "^1.5.0"
+    "reactjs-popup": "^1.5.0",
+    "reactstrap": "^8.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

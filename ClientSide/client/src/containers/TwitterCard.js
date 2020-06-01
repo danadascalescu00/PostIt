@@ -9,6 +9,11 @@ import './TwitterCard.css'
 import footer from './Images/TwitterFooter.png'
 import twitterIcon from './Images/twitterIcon.png'
 
+function capitalize_Words(str)
+{
+  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 const useStyles = makeStyles({
   root: {
     minWidth: 100,
@@ -68,7 +73,7 @@ export default function TwitterCard(props) {
         </div>
         <div className='RightClassTwitter'>
           <div class='TwitterTitle'>
-            Andrei Liviu <span className='TwitterInfo'>@andreiliviu2 &#8226; Just now</span>
+            {capitalize_Words(props.username)} <span className='TwitterInfo'>@{props.username} &#8226; Just now</span>
           </div>
           <div className='TwitterBody'>
             {

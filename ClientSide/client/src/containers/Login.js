@@ -55,8 +55,6 @@ class Login extends Component {
         localStorage.setItem('JWT', response.data.token);
         this.setState({
           loggedIn: true,
-          showError: false,
-          showError: 0,
         });
       } catch (error) {
         console.error(error)
