@@ -103,11 +103,11 @@ export default function FacebookCard(props) {
             </Typography>
         }
       </CardContent>
-      <div class='FooterCard'>
-        <div class='FooterContainerLeft'>
+      <div className='FooterCard'>
+        <div className='FooterContainerLeft'>
           <span>150 likes</span>
         </div>
-        <div class='FooterContainerRight'>
+        <div className='FooterContainerRight'>
           <span>20 comments</span>  <span>8 shares</span>
         </div>
       </div>

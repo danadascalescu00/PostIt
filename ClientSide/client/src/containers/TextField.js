@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '60ch',
+      width: '330px',
       alignContent: 'center'  
     },
   },
@@ -25,6 +25,7 @@ export default function MultilineTextField(props) {
         rows={4}
         multiline
         columns={40}
+        margin="normal"
         variant="outlined"
         label="Your content"
         onChange={handleChange.bind(this)}

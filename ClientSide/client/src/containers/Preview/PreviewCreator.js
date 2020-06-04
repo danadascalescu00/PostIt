@@ -8,7 +8,7 @@ export default function PreviewCreator({ handleAddPreview }) {
         handleAddPreview("twitter")
     }
     return (
-        <div class="preview previewCreator">
+        <div className="preview previewCreator">
             <button onClick={createFacebookPreview}>Add Facebook preview</button>
             <button onClick={createTwitterPreview}>Add Twitter preview</button>
         </div>

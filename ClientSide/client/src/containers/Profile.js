@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Table from '@material-ui/core/Table';
@@ -12,11 +12,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Modal from 'react-bootstrap/Modal';
 import PostField from './PostField';
 import './Profile.css'
+import classnames from 'classnames';
 import FacebookCard from './FacebookCard'
 import RedditCard from './RedditCard'
 import Avatar from 'react-avatar'
 import TwitterCard from './TwitterCard'
 import SamplePreview from './SamplePreview'
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, CardTitle, CardText, Row, Col } from 'reactstrap';
+
 
 import {
   LinkButtons,
@@ -125,8 +128,7 @@ class Profile extends Component {
           twitterLoggedIn: twitterActions,
           facebookLoggedIn: facebookActions,
         });
-        console.log('here_____')
-        console.log(response.data)
+
       } catch (error) {
         console.error(error);
         this.setState({
@@ -181,6 +183,7 @@ class Profile extends Component {
   };
 
   render() {
+
     const {
       username,
       password,
@@ -195,7 +198,7 @@ class Profile extends Component {
       twitterLoggedIn,
       facebookLoggedIn, 
     } = this.state;
-
+    
     if (error) {
       return (
         <div>
@@ -219,6 +222,7 @@ class Profile extends Component {
           loginWithTwitter={this.loginTwitter}
           loginWithReddit={this.loginReddit}
           logOut={this.logout}
+          username={username}
           />
           <div style={loading}>Loading User Data...</div>
         </div>
@@ -231,58 +235,50 @@ class Profile extends Component {
     return (
       <div>
         <HeaderDash
-          loggedFacebook={postFacebook}
-          loggedReddit={postReddit}
-          loggedTwitter={postTwitter}
           loginWithFacebook={this.loginFacebook}
           loginWithTwitter={this.loginTwitter}
           loginWithReddit={this.loginReddit}
-          logOut={this.logout}/>
+          logOut={this.logout}
+          username={username}/>
 
         <>
-          
           <h2>
             Create a post
           </h2>
-
-          
-
-              <br /> <br /> <br />
-              <PostField
-                canPostReddit={postReddit}
-                canPostTwitter={postTwitter}
-                canPostFacebook={this.state.postFacebook}
-                change={this.textViewChanged} 
-                title={this.textViewChangedTitle}
-              />
-              <div className='modalPreview'> <br /> <br /><i>Tap on the cards you want to post</i></div>
-              <div className="cards">
-                <FacebookCard
-                  username={this.state.username}
-                  loggedIn={facebookLoggedIn}
-                  content={this.state.content} 
-                  handlePost={this.postHandler}
-                />
-                <RedditCard
-                  username={this.state.username}
-                  title={this.state.title}
-                  loggedIn={redditLoggedIn}
-                  content={this.state.content} 
-                  handlePost={this.postHandler}
-                />
-                <TwitterCard
-                  username={this.state.username}
-                  loggedIn={twitterLoggedIn}
-                  content={this.state.content}
-                  handlePost={this.postHandler}
-                />
-              </div>
+          <br /> <br /> <br />
+          <PostField
+            canPostReddit={postReddit}
+            canPostTwitter={postTwitter}
+            canPostFacebook={this.state.postFacebook}
+            change={this.textViewChanged} 
+            title={this.textViewChangedTitle}
+          />
+          <div className='modalPreview'> <br /> <br /><i>Tap on the cards you want to post</i></div>
+          <div className="cards">
+            <FacebookCard
+              username={this.state.username}
+              loggedIn={facebookLoggedIn}
+              content={this.state.content} 
+              handlePost={this.postHandler}
+            />
+            <RedditCard
+              username={this.state.username}
+              title={this.state.title}
+              loggedIn={redditLoggedIn}
+              content={this.state.content} 
+              handlePost={this.postHandler}
+            />
+            <TwitterCard
+              username={this.state.username}
+              loggedIn={twitterLoggedIn}
+              content={this.state.content}
+              handlePost={this.postHandler}
+            />
+          </div>
 
 
         </>
         <br /> <br /> <br />
-
-
       </div>
     );
   }

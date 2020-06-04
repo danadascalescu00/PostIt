@@ -21,62 +21,64 @@ import {
   Media
 } from "reactstrap";
 import axios from "axios";
+import logo from "./logo.png";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+const linkLogoStyle = {
+  container: (isRowBased) =>({
+    width: isRowBased ? 'auto' : '100px',
+  })
+};
+
 
 
 class HeaderDash extends React.Component {
   render() {
     return (
       <>
-        <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
+        <Navbar >
           <Container fluid>
-            <Link
-              className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
-              to="/"
-            >
-              {this.props.brandText}
-            </Link>
+            <a href="/" >
+              <img className = "logo-dash" src = {logo} alt = "Logo"/>
+            </a>
+            <Nav className="ml-auto">
 
-            <Nav className="align-items-center d-none d-md-flex" navbar>
               <UncontrolledDropdown nav>
                 <DropdownToggle className="pr-0" nav>
                   <Media className="align-items-center">
                     <span className="avatar avatar-sm rounded-circle">
-                      <Avatar name={"Cristian Stern"} round={true} size={"70"}/>
+                      <Avatar name={this.props.username} round={true} size={"25"}/>
                     </span>
-                    <Media className="ml-2 d-none d-lg-block">
+                    <Media className="ml-2  d-lg-block">
                       <span className="ml-0 text-dark font-weight-bold">
-                        {this.props.username}
+                        My Profile
                       </span>
                     </Media>
                   </Media>
                 </DropdownToggle>
-                <DropdownMenu className="dropdown-menu-arrow" right>
+                <DropdownMenu direction="left" className="dropdown-menu-arrow" right>
                   <DropdownItem className="noti-title" header tag="div">
-                    <h6 className="text-overflow m-0">Welcome!</h6>
+                    <h6 className="dropdown-item-text">Welcome!</h6>
                   </DropdownItem>
                   <DropdownItemLogIn
-                    loggedIn={this.props.loggedFacebook}
                     loginWithSocialNetworkName={this.props.loginWithFacebook}
                     socialNetworkName='Facebook'
                   />
                   <DropdownItemLogIn
-                    loggedIn={this.props.loggedReddit}
-                    loginWithSocialNetworkName={this.props.loggedReddit}
+                    loginWithSocialNetworkName={this.props.loginWithReddit}
                     socialNetworkName='Reddit'
                   />
                   <DropdownItemLogIn
-                    loggedIn={this.props.loggedTwitter}
-                    loginWithSocialNetworkName={this.props.loggedTwitter}
+                    loginWithSocialNetworkName={this.props.loginWithTwitter}
                     socialNetworkName='Twitter'
                   />
-                  <DropdownItem href='/Aboutus'>
+                  <DropdownItem href='/'>
                     <i className="ni ni-support-16" />
-                    <span>Support</span>
+                    <span className="dropdown-item-text">Support</span>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem onClick={this.props.logOut}  >
-                    <i className="ni ni-user-run" />
-                    <span>Log out</span>
+                    <span className="dropdown-item-text">Log out</span>
                   </DropdownItem>
 
                 </DropdownMenu>

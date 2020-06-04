@@ -2,13 +2,13 @@ import React from 'react'
 
 function getFooter(previewType, content) {
     if (previewType === 'facebook')
-        return <span class="facebookFooter">
+        return <span className="facebookFooter">
             <span>
-                <img class="reaction" src="/images/like.png" />
+                <img className="reaction" src="/images/like.png" />
                 {content.reactions.likes}
             </span>
 
-            <span class="rightAlign">
+            <span className="rightAlign">
                 {content.reactions.comments} comments
             </span>
         </span>
@@ -21,7 +21,7 @@ function getFooter(previewType, content) {
 
 export default function PreviewFooter({ previewType, content }) {
     return (
-        <div class="previewFooter">
+        <div className="previewFooter">
             {getFooter(previewType, content)}
         </div>
     )

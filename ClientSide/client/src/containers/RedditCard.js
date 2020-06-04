@@ -69,10 +69,10 @@ export default function RedditCard(props) {
             <div><img src={downvote} width='15px'/> </div>
         </div>
         <div className='RightClassReddit'>
-          <div class='RedditHeader'>
+          <div className='RedditHeader'>
           Posted by u/postittest just now
           </div>
-          <div class='RedditTitle'>
+          <div className='RedditTitle'>
             {
               enabled == true
               ? props.title
@@ -84,7 +84,7 @@ export default function RedditCard(props) {
           <div className='RedditBody'>
           {
             enabled === true
-            ? <Typography variant="body2" component="p">
+            ? <Typography  variant="body2" component="p">
               {
                 props.content
                 ? props.content

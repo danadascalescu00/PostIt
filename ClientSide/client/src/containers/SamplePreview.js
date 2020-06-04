@@ -31,7 +31,7 @@ function SamplePreview() {
 
     return (
         <div>
-            <div class="previewList">
+            <div className="previewList">
                 <PreviewList previews={previews} content={CONTENT} handleRemovePreview={handleRemovePreview} />
                 <PreviewCreator handleAddPreview={handleAddPreview} />
             </div>

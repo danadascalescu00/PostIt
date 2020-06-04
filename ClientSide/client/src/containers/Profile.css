@@ -34,6 +34,22 @@ min-height: 50% !important;
     justify-content: space-evenly;
 }
 
+.dropdown-item-text{
+    font-size: medium;
+}
+
+.logo-dash{
+    width: 30%;
+    align-self: baseline;
+}
+
+.ml-auto.nav{
+    padding-left: 0;
+}
+
+
+
+
 @media only screen and (max-width: 2100px) and (min-width: 1900px) {
     .MuiCard-root {
         transform: scale(0.8);
@@ -53,3 +69,15 @@ min-height: 50% !important;
 }
 
 
+@media only screen and (max-width: 450px){
+    .ml-auto.nav {
+        padding-right: 0px;
+        margin-left: 0px;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}

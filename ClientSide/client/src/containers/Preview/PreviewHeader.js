@@ -4,7 +4,7 @@ function getHeader(previewType, content) {
     if (previewType === 'facebook')
         return <>
             <div>
-                <img class="facebookProfileImage" src="/images/facebook.jpeg" />
+                <img className="facebookProfileImage" src="/images/facebook.jpeg" />
             </div>
             <div>
                 <div>
@@ -18,7 +18,7 @@ function getHeader(previewType, content) {
     if (previewType === 'twitter')
         return <>
             <div>
-                <img class="facebookProfileImage" src="/images/twitter.png" />
+                <img className="facebookProfileImage" src="/images/twitter.png" />
             </div>
             <div>
                 <div>
@@ -37,7 +37,7 @@ export default function PreviewHeader({ id, previewType, content, handleRemovePr
         handleRemovePreview(id);
     }
     return (
-        <div class="previewHeader">
+        <div className="previewHeader">
             {getHeader(previewType, content)}
             <div>
                 <button onClick={remove}>X</button>

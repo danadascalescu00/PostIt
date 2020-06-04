@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '60ch',
+      width: '330px',
       alignContent: 'center'  
     },
   },
@@ -26,6 +26,7 @@ export default function TitleTextField(props) {
         multiline
         columns={40}
         variant="outlined"
+        margin="normal"
         label="Your title goes here (for Reddit)"
         onChange={handleChange.bind(this)}
         placeholder="Type your title here..."

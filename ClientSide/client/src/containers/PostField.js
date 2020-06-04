@@ -6,6 +6,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import axios from 'axios'
 import './PostField.css'
 import loading from './Images/loading2.gif'
+import {LinkButtons, postButton} from "../components";
 
 
 const envDomain = 'localhost'
@@ -90,30 +91,21 @@ class PostField extends Component {
 				<div className="innerContainerPost">
 					<TitleTextField change={this.textViewChangedTitle}/>
 					<MultilineTextField change={this.textViewChanged}/>
-					<ButtonGroup 
-						className="editButtonGroup"
-						color="secondary" 
-						style={{borderRadius: '15px'}} 
-						aria-label="outlined secondary button group"
-					>
-						<Button><b>B</b></Button>
-						<Button><i>I</i></Button>
-						<Button><u>u</u></Button>
-					</ButtonGroup>
+
 					{
 						this.state.isLoading
 						? <img src={loading} className="postButton" height='45px' width='45px' alt="Check" />
-						: <Button
+						: <LinkButtons
 							className="postButton"
+							buttonText="Post"
+							buttonStyle={postButton}
 							variant="contained"
 							color="primary"
 							onClick={()=> this.postContent(
 								this.props.canPostReddit,
 								this.props.canPostTwitter,
 								this.props.canPostFacebook,
-							)}>
-							Post
-						</Button>
+							)}/>
 					}
 				</div>
 			</div>

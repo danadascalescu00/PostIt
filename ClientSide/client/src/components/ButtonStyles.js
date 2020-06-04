@@ -63,6 +63,13 @@ export const deleteButton = {
     margin: '.5em',
     width: '17em',
   };
+
+  export const postButton = {
+    background: 'royalblue',
+    width: '17em',
+    borderRadius: '100px',
+    padding: '1em',
+  }
   
   export default {
     deleteButton,

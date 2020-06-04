@@ -72,7 +72,7 @@ export default function TwitterCard(props) {
             <img src={twitterIcon} style={{borderRadius: '20px', transform: 'translateX(4px)'}} width='35px' height='35px'/>
         </div>
         <div className='RightClassTwitter'>
-          <div class='TwitterTitle'>
+          <div className='TwitterTitle'>
             {capitalize_Words(props.username)} <span className='TwitterInfo'>@{props.username} &#8226; Just now</span>
           </div>
           <div className='TwitterBody'>

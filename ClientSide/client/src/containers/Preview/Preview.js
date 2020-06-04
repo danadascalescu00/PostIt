@@ -5,7 +5,7 @@ import PreviewFooter from './PreviewFooter'
 
 export default function Preview({ id, previewType, content, handleRemovePreview }) {
     return (
-        <div class="preview">
+        <div className="preview">
             <PreviewHeader id={id} previewType={previewType} content={content} handleRemovePreview={handleRemovePreview} />
             <PreviewContent previewType={previewType} content={content} />
             <PreviewFooter previewType={previewType} content={content} />
