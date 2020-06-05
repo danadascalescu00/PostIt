@@ -32,7 +32,7 @@ class PostField extends Component {
 	}
 
 	postContent = async (canPostReddit, canPostTwitter, canPostFacebook) => {
-		
+		console.log("in postCOntent")
 		const accessString = localStorage.getItem('JWT');
 		this.setState({
 			isLoading: true,
@@ -43,7 +43,7 @@ class PostField extends Component {
 			});
 		} else {
 			try {
-				const response = await axios.post(`http://${envDomain}/post`,  
+				const response = await axios.post(`http://${envDomain}/post`, 
 				{ 
 					// main content of the post
 					postTitle: this.state.title,
@@ -60,7 +60,7 @@ class PostField extends Component {
 						'Content-Type': 'application/json',
 					}
 				});
-
+				console.log("______response")
 				console.log(response.data.message)
 				if (response.data.message === 'posted') {
 					this.setState({
@@ -95,17 +95,18 @@ class PostField extends Component {
 					{
 						this.state.isLoading
 						? <img src={loading} className="postButton" height='45px' width='45px' alt="Check" />
-						: <LinkButtons
+						: <Button
 							className="postButton"
-							buttonText="Post"
-							buttonStyle={postButton}
 							variant="contained"
 							color="primary"
+							style={postButton}
 							onClick={()=> this.postContent(
 								this.props.canPostReddit,
 								this.props.canPostTwitter,
 								this.props.canPostFacebook,
-							)}/>
+							)}>
+							Post
+						</Button>
 					}
 				</div>
 			</div>
