@@ -12,7 +12,7 @@ import blob from '../components/Assets/blob_shape.png';
 
 const navOptions = [
     {option: 'Home'},
-    {option: 'About us'},
+    {option: 'Our 404 page'},
     {option: 'Log In'},
     {option: 'Sign Up'},
   ];

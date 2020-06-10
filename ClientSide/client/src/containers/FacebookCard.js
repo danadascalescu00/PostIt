@@ -5,8 +5,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import facebookIcon from './Images/facebookIcon1.png'
-import './FacebookCard.css'
+import facebookIcon from './Images/facebookIcon1.png';
+import './FacebookCard.css';
 
 function capitalize_Words(str)
 {

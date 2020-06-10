@@ -23,9 +23,15 @@ min-height: 50% !important;
     font-weight: lighter;
     font-size: 180%;
     color: palevioletred;
-    /* justify-content: center;
-    align-items: center;
-    align-content: center; */
+}
+
+.create-post h2{
+        margin-right: fill;
+}
+
+.cards-section{
+    float: right;
+    width: 100%;
 }
 
 .cards {
@@ -45,6 +51,22 @@ min-height: 50% !important;
 
 .ml-auto.nav{
     padding-left: 0;
+}
+
+.showMobile{
+    display:none;
+}
+
+
+.show-desktop{
+    display: flex !important;
+}
+
+.icons {
+    width: 53%;
+    float: right;
+    position: relative;
+    transform: scaleX(-1);
 }
 
 
@@ -68,6 +90,34 @@ min-height: 50% !important;
     }
 }
 
+@media only screen and (max-width: 1150px) {
+    .icons{
+        width: 45% !important;
+        /*text-align: center !important;*/
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .icons{
+        float: inherit !important;
+        width: 70% !important;
+        /*text-align: center !important;*/
+    }
+}
+
+@media only screen and (min-width: 730px) {
+    .create-post{
+        display: flex;
+        flex-direction: column;
+        float: left;
+        margin-left: 12em;
+        margin-top: 3em;
+        /*margin-right: 10%;*/
+    }
+}
+
+
 
 @media only screen and (max-width: 450px){
     .ml-auto.nav {
@@ -75,9 +125,27 @@ min-height: 50% !important;
         margin-left: 0px;
     }
 
+    .showMobile{
+        display: block;
+    }
+
+    .show-desktop{
+        display: none !important;
+    }
+
+
+
     .cards {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
+    .icons{
+        width: 70% !important;
+    }
+
 }
+
+
+
+

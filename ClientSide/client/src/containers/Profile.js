@@ -10,7 +10,12 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Modal from 'react-bootstrap/Modal';
+
 import PostField from './PostField';
+import FacebookCardMobile from './FacebookCardMobile'
+import RedditCardMobile from './RedditCardMobile'
+import TwitterCardMobile from './TwitterCardMobile'
+
 import './Profile.css'
 import classnames from 'classnames';
 import FacebookCard from './FacebookCard'
@@ -32,6 +37,7 @@ import {
   linkStyle,
   forgotButton,
 } from '../components';
+import icons from "./Images/all_iconscpy.png";
 
 const envDomain = 'localhost'
 
@@ -39,6 +45,8 @@ const loading = {
   margin: '1em',
   fontSize: '24px',
 };
+
+
 
 
 
@@ -242,43 +250,66 @@ class Profile extends Component {
           username={username}/>
 
         <>
-          <h2>
-            Create a post
-          </h2>
-          <br /> <br /> <br />
-          <PostField
-            canPostReddit={postReddit}
-            canPostTwitter={postTwitter}
-            canPostFacebook={this.state.postFacebook}
-            change={this.textViewChanged} 
-            title={this.textViewChangedTitle}
-          />
-          <div className='modalPreview'> <br /> <br /><i>Tap on the cards you want to post</i></div>
-          <div className="cards">
-            <FacebookCard
-              username={this.state.username}
-              loggedIn={facebookLoggedIn}
-              content={this.state.content} 
-              handlePost={this.postHandler}
-            />
-            <RedditCard
-              username={this.state.username}
-              title={this.state.title}
-              loggedIn={redditLoggedIn}
-              content={this.state.content} 
-              handlePost={this.postHandler}
-            />
-            <TwitterCard
-              username={this.state.username}
-              loggedIn={twitterLoggedIn}
-              content={this.state.content}
-              handlePost={this.postHandler}
+          <div className="create-post">
+            <h2>
+              Create a post
+            </h2>
+            <div className="showMobile">
+              <FacebookCardMobile
+                username={this.state.username}
+                loggedIn={facebookLoggedIn}
+                content={this.state.content}
+                handlePost={this.postHandler}
+              />
+              <RedditCardMobile
+                username={this.state.username}
+                title={this.state.title}
+                loggedIn={redditLoggedIn}
+                content={this.state.content}
+                handlePost={this.postHandler}
+              />
+              <TwitterCardMobile
+                username={this.state.username}
+                loggedIn={twitterLoggedIn}
+                content={this.state.content}
+                handlePost={this.postHandler}
+              />
+            </div>
+            <PostField
+              canPostReddit={postReddit}
+              canPostTwitter={postTwitter}
+              canPostFacebook={this.state.postFacebook}
+              change={this.textViewChanged}
+              title={this.textViewChangedTitle}
             />
           </div>
-
-
+          <img src={icons} alt="icons"  className="icons"/>
+          <div className="cards-section">
+            <div className='modalPreview'> <br /> <br /><i>Tap on the cards you want to post</i></div>
+            <div className="cards show-desktop">
+              <FacebookCard
+                username={this.state.username}
+                loggedIn={facebookLoggedIn}
+                content={this.state.content}
+                handlePost={this.postHandler}
+              />
+              <RedditCard
+                username={this.state.username}
+                title={this.state.title}
+                loggedIn={redditLoggedIn}
+                content={this.state.content}
+                handlePost={this.postHandler}
+              />
+              <TwitterCard
+                username={this.state.username}
+                loggedIn={twitterLoggedIn}
+                content={this.state.content}
+                handlePost={this.postHandler}
+              />
+            </div>
+          </div>
         </>
-        <br /> <br /> <br />
+
       </div>
     );
   }

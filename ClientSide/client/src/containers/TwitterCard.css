@@ -42,3 +42,11 @@
     bottom: 15px;
     transform: translateX(-8px);
 }
+
+
+
+@media only screen and (max-width: 450px){
+    .show-mobile{
+        display: none !important;
+    }
+}
