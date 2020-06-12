@@ -57,7 +57,7 @@ class Register extends Component {
       console.log(username, password)
       try {
         const response = await axios.post(
-          'http://localhost/api/register', { username, password }
+          'http://20.188.32.238/api/register', { username, password }
         );
 
         this.setState({

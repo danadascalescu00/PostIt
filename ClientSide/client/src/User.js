@@ -12,7 +12,7 @@ class User extends Component {
     }
 
     callAPI() {
-        fetch("http://localhost/api")
+        fetch("http://20.188.32.238/api")
             .then(res => res.text())
             .then(res => { 
                 this.setState({ apiResponse: res }); 

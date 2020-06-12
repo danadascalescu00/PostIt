@@ -209,7 +209,7 @@ module.exports = function(multiPassport) {
     multiPassport.use(new TwitterStrategy({
         consumerKey: TWITTER_APP_ID,
         consumerSecret: TWITTER_APP_SECRET,
-        callbackURL: 'http://localhost/return/twitter',
+        callbackURL: 'http://20.188.32.238/return/twitter',
         passReqToCallback: true
     },
     function (req, token, tokenSecret, profile, cb) {

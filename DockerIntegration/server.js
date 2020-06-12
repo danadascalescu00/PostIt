@@ -9,12 +9,12 @@ app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 
 const whitelist = [
-  'http://localhost:3031',
-  'http://localhost:3000',
-  'http://localhost:3003',
-  'capacitor://localhost',
-  'ionic://localhost',
-  'http://localhost',
+  'http://20.188.32.238:3031',
+  'http://20.188.32.238:3000',
+  'http://20.188.32.238:3003',
+  'capacitor://20.188.32.238',
+  'ionic://20.188.32.238',
+  'http://20.188.32.238',
 ]
 
 const corsOptions = {

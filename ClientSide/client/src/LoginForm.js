@@ -28,7 +28,7 @@ class LoginForm extends Component {
             })
         }
 
-        fetch('http://localhost/api/signup', requestOptions)
+        fetch('http://20.188.32.238/api/signup', requestOptions)
             .then(res => console.log(res))
             .catch(error => console.log(error))
 

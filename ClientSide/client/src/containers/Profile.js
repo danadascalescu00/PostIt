@@ -39,7 +39,7 @@ import {
 } from '../components';
 import icons from "./Images/all_iconscpy.png";
 
-const envDomain = 'localhost'
+const envDomain = '20.188.32.238'
 
 const loading = {
   margin: '1em',

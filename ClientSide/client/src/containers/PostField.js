@@ -9,7 +9,7 @@ import loading from './Images/loading2.gif'
 import {LinkButtons, postButton} from "../components";
 
 
-const envDomain = 'localhost'
+const envDomain = '20.188.32.238'
 
 class PostField extends Component {
 	constructor(props) {

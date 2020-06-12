@@ -46,7 +46,7 @@ class Login extends Component {
       });
     } else {
       try {
-        const response = await axios.post('http://localhost/api/login', {
+        const response = await axios.post('http://20.188.32.238/api/login', {
           username,
           password,
         });
