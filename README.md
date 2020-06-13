@@ -9,14 +9,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
-
 The page will reload if you make edits.
-
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-To run Postit application on your machine, you have to get the last version of [npm](https://www.npmjs.com/get-npm), and you also need to have [Docker](https://docs.docker.com/docker-for-windows/install/) and Docker-compose installed.
+##### What things you need to install in order to run the application on rour machine and how to install them.
+
+You have to get the last version of [npm](https://www.npmjs.com/get-npm), and you also need to have [Docker](https://hub.docker.com/search?q=&type=edition&offering=community&sort=updated_at&order=desc) and Docker-compose installed.
+
+### Installing
 
 To run it on your machine, you have to open two terminals and type as follows:
 
@@ -34,16 +35,11 @@ $ npm install
 $ npm start
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
 ## Table of contents
 * [About the project](#about-the-project)
 * [Running the tests](#running-the-tests)
 * [Deployment](#deployment)
 * [Built With](#built-with)
-
 
 ## About the project
 
@@ -62,8 +58,7 @@ Add additional notes about how to deploy this on a live system
 * **Material UI** -  One of the most popular React UI component used for frontend development.
 * **Docker CLI** - The plugins used for building, testing, and sharing the containerized application. Docker was used for loading a 
 full OS on top of our host system and having certain essential resources emulated.
-* **MongoDB** - A NoSQL database used for transactionals store. It is great to used when the perfomnace is a concern and the data structure evolves over time.
-
+* **MongoDB** - A NoSQL database used for transactionals store. It is great to used when the perfomnace is a concern and the data  structure evolves over time.
 
 ## Authors
 
@@ -72,10 +67,7 @@ full OS on top of our host system and having certain essential resources emulate
 * **Gălățan Alex Cristian**
 * **Dăscălescu Dana**
 
-
 See also the list of [contributors](https://github.com/danadascalescu00/PostIt) who participated in this project.
-
-
 
 ## License
 
