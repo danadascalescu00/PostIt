@@ -51,6 +51,8 @@ Add additional notes about how to deploy this on a live system
 * **Ungureanu Liviu Andrei**
 * **Stern Cristian David**
 * **Gălățan Alex Cristian**
+* **Dăscălescu Dana**
+
 
 See also the list of [contributors](https://github.com/danadascalescu00/PostIt) who participated in this project.
 
