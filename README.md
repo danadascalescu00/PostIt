@@ -16,12 +16,22 @@ The page will reload if you make edits.
 ### Prerequisites
 
 What things you need to install the software and how to install them
-To run Postit application on your machine, you have to get the last version of [npm](https://www.npmjs.com/get-npm), and you also need to have Docker(https://docs.docker.com/docker-for-windows/install/) and Docker-compose installed.
+To run Postit application on your machine, you have to get the last version of [npm](https://www.npmjs.com/get-npm), and you also need to have [Docker](https://docs.docker.com/docker-for-windows/install/) and Docker-compose installed.
 
-You Can 
+To run it on your machine, you have to open two terminals and type as follows:
+
+#### First Terminal
+```
+$ cd DockerIntegration
+$ docker-compose down && docker-compose build && docker-compose up -d && docker attach docker-node-mongo
+```
+
+#### Second terminal
 
 ```
-Give examples
+$ cd ClientSide/client/
+$ npm install
+$ npm start
 ```
 
 ### Installing
