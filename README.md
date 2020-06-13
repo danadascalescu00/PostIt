@@ -16,6 +16,9 @@ The page will reload if you make edits.
 ### Prerequisites
 
 What things you need to install the software and how to install them
+To run Postit application on your machine, you have to get the last version of [npm](https://www.npmjs.com/get-npm), and you also need to have Docker(https://docs.docker.com/docker-for-windows/install/) and Docker-compose installed.
+
+You Can 
 
 ```
 Give examples
@@ -57,6 +60,7 @@ full OS on top of our host system and having certain essential resources emulate
 * **Ungureanu Liviu Andrei**
 * **Stern Cristian David**
 * **Gălățan Alex Cristian**
+* **Dăscălescu Dana**
 
 
 See also the list of [contributors](https://github.com/danadascalescu00/PostIt) who participated in this project.
