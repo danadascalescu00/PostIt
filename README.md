@@ -44,11 +44,12 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 * **Adobe Illustrator** - The vector graphics editor developed used for the creation of Isometric design.
-* **ReactJs** - The open-source JavaScript library used for building the user interface.
+* **[ReactJs](https://github.com/facebook/react)** - The open-source JavaScript library used for building the user interface.
 * **React Bootstrap** - The front-end framework used for building the user interface.
 * **Material UI** -  One of the most popular React UI component used for frontend development.
 * **Docker CLI** - The plugins used for building, testing, and sharing the containerized application. Docker was used for loading a 
 full OS on top of our host system and having certain essential resources emulated.
+* **MongoDB** - A NoSQL database used for transactionals store. It is great to used when the perfomnace is a concern and the data structure evolves over time.
 
 
 ## Authors
