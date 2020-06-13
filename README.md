@@ -5,10 +5,6 @@
 ![First page application](https://github.com/danadascalescu00/PostIt/blob/master/Design/Asset%201.png)
 
 ## Getting started
-&emsp; These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-## Getting Started
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
@@ -27,33 +23,36 @@ A step by step series of examples that tell you how to get a development env run
 * [About the project](#about-the-project)
 * [Running the tests](#running-the-tests)
 * [Deployment](#deployment)
-
+* [Built With](#built-with)
 
 
 ## About the project
 
 
-
 ## Running the tests
-
 
 
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
 
+## Built With
+
+
 
 ## Authors
 
 * **Ungureanu Liviu Andrei**
 * **Stern Cristian David**
-* **Gălățan Alex Cristian
-* **Dăscălescu Dana**
+* **Gălățan Alex Cristian**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/danadascalescu00/PostIt) who participated in this project.
 
 
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
+##### Presentation video: 
