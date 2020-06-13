@@ -1,5 +1,9 @@
 const Cors = require('cors')
 const express = require('express')
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+
 
 multiPassport = new (require('passport')).Passport()
 require('./config/passport')(multiPassport)
@@ -43,6 +47,8 @@ app.use(require('express-session')({
   secret: 'mydirtylittlesecret', 
 }))
 
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.use(multiPassport.initialize())
 app.use(multiPassport.session())
 
@@ -53,4 +59,18 @@ require('./config/mongoAdapter')()
 // require('./routes.js')(app, multiPassport)
 require('./routesAPI.js')(app, multiPassport)
 
-app.listen(3000);
+
+
+var options = {
+
+  key: fs.readFileSync('../../server.key'),
+ 
+  cert: fs.readFileSync('../../nume.crt'),
+ 
+  ca: fs.readFileSync ('../../nume.ca-bundle')
+ 
+ };
+ 
+ https.createServer(options, app).listen(443);
+ 
+// app.listen(3000);

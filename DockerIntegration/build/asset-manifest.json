@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bd8a26e8.chunk.css",
+    "main.js": "/static/js/main.d7c9ef6f.chunk.js",
+    "main.js.map": "/static/js/main.d7c9ef6f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.cfae3202.js",
+    "runtime-main.js.map": "/static/js/runtime-main.cfae3202.js.map",
+    "static/css/2.de424728.chunk.css": "/static/css/2.de424728.chunk.css",
+    "static/js/2.e7c395e7.chunk.js": "/static/js/2.e7c395e7.chunk.js",
+    "static/js/2.e7c395e7.chunk.js.map": "/static/js/2.e7c395e7.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.71bdc458edeca6e69395fae81772ece1.js": "/precache-manifest.71bdc458edeca6e69395fae81772ece1.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "/static/css/2.de424728.chunk.css.map",
+    "static/css/main.bd8a26e8.chunk.css.map": "/static/css/main.bd8a26e8.chunk.css.map",
+    "static/js/2.e7c395e7.chunk.js.LICENSE.txt": "/static/js/2.e7c395e7.chunk.js.LICENSE.txt",
+    "static/media/RedditStuff.png": "/static/media/RedditStuff.a3c4fa20.png",
+    "static/media/TwitterFooter.png": "/static/media/TwitterFooter.a2dc2aa7.png",
+    "static/media/all_iconscpy.png": "/static/media/all_iconscpy.c08a5a9d.png",
+    "static/media/Home.css": "/static/media/background.72e102d7.jpg",
+    "static/media/downvoteReddit.png": "/static/media/downvoteReddit.2c49c93f.png",
+    "static/media/loading2.gif": "/static/media/loading2.0a4d8f66.gif",
+    "static/media/redditIcon.png": "/static/media/redditIcon.c204a60f.png",
+    "static/media/robot_404_not_found.png": "/static/media/robot_404_not_found.aac5c27e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cfae3202.js",
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.e7c395e7.chunk.js",
+    "static/css/main.bd8a26e8.chunk.css",
+    "static/js/main.d7c9ef6f.chunk.js"
+  ]
+}
