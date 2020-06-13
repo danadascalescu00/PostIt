@@ -43,7 +43,12 @@ A step by step series of examples that tell you how to get a development env run
 Add additional notes about how to deploy this on a live system
 
 ## Built With
-
+* **Adobe Illustrator** - The vector graphics editor developed used for the creation of Isometric design.
+* **ReactJs** - The open-source JavaScript library used for building the user interface.
+* **React Bootstrap** - The front-end framework used for building the user interface.
+* **Material UI** -  One of the most popular React UI component used for frontend development.
+* **Docker CLI** - The plugins used for building, testing, and sharing the containerized application. Docker was used for loading a 
+full OS on top of our host system and having certain essential resources emulated.
 
 
 ## Authors
@@ -51,7 +56,6 @@ Add additional notes about how to deploy this on a live system
 * **Ungureanu Liviu Andrei**
 * **Stern Cristian David**
 * **Gălățan Alex Cristian**
-* **Dăscălescu Dana**
 
 
 See also the list of [contributors](https://github.com/danadascalescu00/PostIt) who participated in this project.
