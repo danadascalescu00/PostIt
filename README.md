@@ -53,6 +53,10 @@ monitoring, specialise customer care and taking shortcuts when it comes to post 
 
 Add additional notes about how to deploy this on a live system
 
+##### The advantages of deployment and the used of multiple environments in the stages of development the PostIt App.
+___
+
+
 ## Built With
 * **Adobe Illustrator** - The vector graphics editor developed used for the creation of Isometric design.
 * **[ReactJs](https://github.com/facebook/react)** - The open-source JavaScript library used for building the user interface.
