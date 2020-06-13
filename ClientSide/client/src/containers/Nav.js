@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import logo from './Images/logo.png';
+import { Link } from 'react-router-dom';
+
  
 const logoStyle = {
     width: "56%",
@@ -44,10 +46,13 @@ function Nav({items}) {
                             break;
                         }
                     }
-                    return <a className = "nav-link active"  href = {path} style = {navLinkStyle}>
+                    return <Link className = "nav-link active"  to = {path} style = {navLinkStyle}>
                             {item.option}
-                           </a>
-                    
+                           </Link>
+                    {/* return <LinkButtons
+                        
+                       link={path} */}
+
                 }
                 )}
             </nav>

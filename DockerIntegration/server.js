@@ -63,11 +63,11 @@ require('./routesAPI.js')(app, multiPassport)
 
 var options = {
 
-  key: fs.readFileSync('../../server.key'),
+  key: fs.readFileSync('./server.key'),
  
-  cert: fs.readFileSync('../../nume.crt'),
+  cert: fs.readFileSync('./nume.crt'),
  
-  ca: fs.readFileSync ('../../nume.ca-bundle')
+  ca: fs.readFileSync ('./nume.ca-bundle')
  
  };
  

@@ -9,7 +9,7 @@ import loading from './Images/loading2.gif'
 import {LinkButtons, postButton} from "../components";
 
 
-const envDomain = '20.188.32.238'
+const envDomain = 'https://postit.software'
 
 class PostField extends Component {
 	constructor(props) {
@@ -43,7 +43,7 @@ class PostField extends Component {
 			});
 		} else {
 			try {
-				const response = await axios.post(`http://${envDomain}/post`, 
+				const response = await axios.post(`${envDomain}/post`, 
 				{ 
 					// main content of the post
 					postTitle: this.state.title,

@@ -28,7 +28,7 @@ class LoginForm extends Component {
             })
         }
 
-        fetch('http://20.188.32.238/api/signup', requestOptions)
+        fetch('https://postit.software/api/signup', requestOptions)
             .then(res => console.log(res))
             .catch(error => console.log(error))
 

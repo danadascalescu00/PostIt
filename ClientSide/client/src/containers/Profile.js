@@ -39,7 +39,7 @@ import {
 } from '../components';
 import icons from "./Images/all_iconscpy.png";
 
-const envDomain = '20.188.32.238'
+const envDomain = 'https://postit.software'
 
 const loading = {
   margin: '1em',
@@ -113,7 +113,7 @@ class Profile extends Component {
       });
     } else {
       try {
-        const response = await axios.get(`http://${envDomain}/api/user`, {
+        const response = await axios.get(`${envDomain}/api/user`, {
           params: {
             username,
           },
@@ -159,15 +159,15 @@ class Profile extends Component {
   handleModal = () => { this.setState({show: true}) }
 
   loginReddit = () => {
-    window.location.assign(`http://${envDomain}/login/reddit`)
+    window.location.assign(`${envDomain}/login/reddit`)
   }
 
   loginFacebook = () => {
-    window.location.assign(`http://${envDomain}/login/facebook`)
+    window.location.assign(`${envDomain}/login/facebook`)
   }
 
   loginTwitter = () => {
-    window.location.assign(`http://${envDomain}/login/twitter`)
+    window.location.assign(`${envDomain}/login/twitter`)
   }
 
   logout = async (e) => {
@@ -175,7 +175,7 @@ class Profile extends Component {
 
     const accessString = localStorage.getItem('JWT');
     try {
-      const response = await axios.get(`http://${envDomain}/api/logout`, {
+      const response = await axios.get(`${envDomain}/api/logout`, {
         headers: { authorization: `JWT ${accessString}` },
       });
       window.location.href='/';

@@ -282,7 +282,7 @@ module.exports = function(app, multiPassport) {
     multiPassport.authenticate('facebook', { 
       failureRedirect: '/login' 
     }), (req, res) => {
-        res.redirect('http://20.188.32.238:3000/userProfile')
+        res.redirect('https://postit.software:3000/userProfile')
     })
 
     
@@ -321,7 +321,7 @@ module.exports = function(app, multiPassport) {
     app.get('/return/twitter',
     multiPassport.authenticate('twitter', { failureRedirect: '/login' }),
     (req, res) => {
-      res.redirect('http://20.188.32.238:3000/userProfile')
+      res.redirect('https://postit.software/userProfile')
     });
 
     app.post('/post/twitter', (req, res, next) => {
@@ -373,7 +373,7 @@ module.exports = function(app, multiPassport) {
     multiPassport.authenticate('reddit', {
       failureRedirect: '/login'
     }), (req, res) => {
-      res.redirect('http://20.188.32.238:3000/userProfile');
+      res.redirect('https://postit.software/userProfile');
     })
 
     app.post('/post/reddit', 

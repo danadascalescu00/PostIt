@@ -209,7 +209,7 @@ module.exports = function(multiPassport) {
     multiPassport.use(new TwitterStrategy({
         consumerKey: TWITTER_APP_ID,
         consumerSecret: TWITTER_APP_SECRET,
-        callbackURL: 'http://20.188.32.238/return/twitter',
+        callbackURL: 'https://postit.software/return/twitter',
         passReqToCallback: true
     },
     function (req, token, tokenSecret, profile, cb) {
@@ -230,7 +230,7 @@ module.exports = function(multiPassport) {
     multiPassport.use(new RedditStrategy({
         clientID: REDDIT_APP_ID,
         clientSecret: REDDIT_APP_SECRET,
-        callbackURL: 'http://20.188.32.238:80/return/reddit',
+        callbackURL: 'https://postit.software/return/reddit',
         passReqToCallback : true
       },
       function(req, accessToken, refreshToken, profile, cb) {

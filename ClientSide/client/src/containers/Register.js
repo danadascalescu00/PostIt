@@ -57,7 +57,7 @@ class Register extends Component {
       console.log(username, password)
       try {
         const response = await axios.post(
-          'http://20.188.32.238/api/register', { username, password }
+          'https://postit.software/api/register', { username, password }
         );
 
         this.setState({
