@@ -56,6 +56,16 @@ Add additional notes about how to deploy this on a live system
 ##### The advantages of deployment and the used of multiple environments in the stages of development the PostIt App.
 ___
 
+1. **Reducing risk of breaking the live website**
+
+&emsp; One of the main reason for using multiple environments and relying on deployment was to reduce the risk of changes having a negative impact on the website.
+While minor changes were easily done directly on the live website, bigger changes had to be done on separate environments without the risk of breaking anything on the live environment. When having multiple contributors working on the same project at the time, it also ensures that no one risks breaking something due to another developer's updates.
+
+2. **Saving time**
+
+&emsp; When working in a local environment it is also the advantage of changes processing faster and not be reliant on any connecrtivity issues
+
+
 
 ## Built With
 * **Adobe Illustrator** - The vector graphics editor developed used for the creation of Isometric design.
