@@ -61,9 +61,17 @@ ___
 &emsp; One of the main reason for using multiple environments and relying on deployment was to reduce the risk of changes having a negative impact on the website.
 While minor changes were easily done directly on the live website, bigger changes had to be done on separate environments without the risk of breaking anything on the live environment. When having multiple contributors working on the same project at the time, it also ensures that no one risks breaking something due to another developer's updates.
 
-2. **Saving time**
+2. **Testing new features**
 
-&emsp; When working in a local environment it is also the advantage of changes processing faster and not be reliant on any connecrtivity issues
+&emsp;Testing new features is crucial in the development stage to ensure that no bugs make it into the final productiion environment. Once we tested all the new features on the local or development environment, we deployed the changes to the new environment in line. Once the  QA testing were done and everything was working in an environment resembling the live one we deployed on the live server. If bugs were discovered along the QA testing a bug report was forwarded. Any changes that did not passed the testing phase were sent back to the local or development environment and once they were fixed they continued to work their way up throug the environments plan.
+
+3. **Saving time**
+
+&emsp; When working in a local environment it is also the advantage of changes processing faster and not be reliant on any connectivity issues.
+
+4. **Time sensitivity content is easier to manage**
+
+
 
 
 
