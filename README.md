@@ -15,7 +15,7 @@ The page will reload if you make edits.
 
 ##### What things you need to install in order to run the application on rour machine and how to install them.
 
-You have to get the last version of [npm](https://www.npmjs.com/get-npm), and you also need to have [Docker](https://hub.docker.com/search?q=&type=edition&offering=community&sort=updated_at&order=desc) and Docker-compose installed.
+You have to get the lastest version(or above v12.16.2) of [NodeJs](https://www.npmjs.com/get-npm), and you also need to have [Docker](https://hub.docker.com/search?q=&type=edition&offering=community&sort=updated_at&order=desc) and [Docker-compose](https://docs.docker.com/compose/install/) installed.
 
 ### Installing
 
@@ -43,6 +43,8 @@ $ npm start
 
 ## About the project
 
+PostIt app come along to fulfil the needs of organizations, from non-profits and small businesses to big companies, for social media 
+monitoring, specialise customer care and taking shortcuts when it comes to post on all of your social channels.
 
 ## Running the tests
 
