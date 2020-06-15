@@ -49,6 +49,8 @@ monitoring, specialise customer care and taking shortcuts when it comes to post 
 
 In PostIt1.0v the platform allows you to post text content on multiple social channels at your choice using only one account. In the future versions, 
 
+[Backlog creation](https://github.com/danadascalescu00/PostIt/tree/master/Backlog)
+
 ## Features
 
 
