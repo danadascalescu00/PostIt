@@ -51,9 +51,11 @@ In PostIt1.0v the platform allows you to post text content on multiple social ch
 
 ## Features
 
+
  **1.** **Simplicity**
  
  &ensp; Isometric design — the latest design trend - was our first choice when it come to make a visual interpretation of our vision because it has a more realistic look while still using flat layers. Another reasons for using this technique was the fact that many people have short attention spans and making a difficult to navigate app will make them to lose interest fast. Clear, uncluttered screens with obvious leads to the next step in the app process and eye-catching design encourage our users to continue to use it.
+ 
  
  **2.** **Speed** 
  
@@ -61,11 +63,12 @@ In PostIt1.0v the platform allows you to post text content on multiple social ch
  soon gives way to boredom resulting in a decision to seek something better. Speed means an appropriate set of graphics and not fetching
  large tables and dataabases. We keep it simple and kee it quick.
  
+ 
  **3.** **Good image resolution**
  
  &ensp; We balanced app speed against functionality and resolution, we also ensured that what is on screen is sufficiently detailed to make the user experience worthwhile.
- 
- 
+
+
  **4.** **Security and compliance with GDPR STANDARDS**
  
  &ensp; Internet security is becoming an ever-incresing issue and the same applies for every application. With many applications storing 
@@ -74,6 +77,8 @@ In PostIt1.0v the platform allows you to post text content on multiple social ch
  
  
  **5.** **Responsive Mobile App Design for Varying Screen Sizes**
+ 
+ 
  
  **6.** **API Suport for the most popular Social Media Platforms**
  
