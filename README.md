@@ -54,7 +54,7 @@ PostIt app comes along to fulfil the needs of organizations, from non-profits an
 In PostIt1.0v the platform allows you to post text content on multiple social channels at your choice using only one account. In the 
 future versions, we plan to add BI Service and ML Insights and the possibility to post images.
 
-[Backlog creation](https://github.com/danadascalescu00/PostIt/tree/master/Backlog)
+[Backlog creation and bug reporting](https://github.com/danadascalescu00/PostIt/tree/master/Backlog)
 
 [Design](https://github.com/danadascalescu00/PostIt/tree/master/Design)
 
