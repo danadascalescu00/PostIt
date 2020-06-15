@@ -37,6 +37,7 @@ $ npm start
 
 ## Table of contents
 * [About the project](#about-the-project)
+* [Features](#features)
 * [Running the tests](#running-the-tests)
 * [Deployment](#deployment)
 * [Built With](#built-with)
@@ -45,6 +46,33 @@ $ npm start
 
 PostIt app come along to fulfil the needs of organizations, from non-profits and small businesses to big companies, for social media 
 monitoring, specialise customer care and taking shortcuts when it comes to post on all of your social channels.
+
+In PostIt1.0v the platform allows you to post text content on multiple social channels at your choice using only one account. In the future versions, 
+
+## Features
+
+ 1. **Simplicity**
+ &emsp; Isometric design — the latest design trend - was our first choice when it come to make a visual interpretation of our vision because it has a more realistic look while still using flat layers. Another reasons for using this technique was the fact that many people have short attention spans and making a difficult to navigate app will make them to lose interest fast. Clear, uncluttered screens with obvious leads to the next step in the app process and eye-catching design encourage our users to continue to use it.
+ 
+ 2. **Speed** 
+ 
+ &emsp; Fast loading screens are vital. No one likes waiting particularly when all they have to look at is a screen-loading symbol which
+ soon gives way to boredom resulting in a decision to seek something better. Speed means an appropriate set of graphics and not fetching
+ large tables and dataabases. We keep it simple and kee it quick.
+ 
+ 3. **Good image resolution**
+ 
+ &emps; We balanced app speed against functionality and resolution, we also ensured that what is on screen is sufficiently detailed to make the user experience worthwhile.
+ 
+ 
+ 4. **Security**
+ 
+ &emps; Internet security is becoming an ever-incresing issue and the same applies for every application. With many applications storing 
+ personal and sensitive information or credit and debit card details, security is an absolute must. What diffentiate PostIt App from all 
+ other applications 
+ 
+ 
+ 5.
 
 ## Running the tests
 
@@ -98,4 +126,4 @@ See also the list of [contributors](https://github.com/danadascalescu00/PostIt) 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 
-##### Presentation video: 
+##### Video presentation: 
