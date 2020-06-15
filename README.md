@@ -62,12 +62,12 @@ In PostIt1.0v the platform allows you to post text content on multiple social ch
  
  3. **Good image resolution**
  
- &emps; We balanced app speed against functionality and resolution, we also ensured that what is on screen is sufficiently detailed to make the user experience worthwhile.
+ &emsp; We balanced app speed against functionality and resolution, we also ensured that what is on screen is sufficiently detailed to make the user experience worthwhile.
  
  
  4. **Security**
  
- &emps; Internet security is becoming an ever-incresing issue and the same applies for every application. With many applications storing 
+ &emsp; Internet security is becoming an ever-incresing issue and the same applies for every application. With many applications storing 
  personal and sensitive information or credit and debit card details, security is an absolute must. What diffentiate PostIt App from all 
  other applications 
  
