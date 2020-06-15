@@ -1,10 +1,12 @@
 var Twitter = require('twitter');
 
+//our Twitter app ID and Secret
 const TWITTER_APP_ID = 'my7Xr8xjZ1gJHUZWqganSOAw7';
 const TWITTER_APP_SECRET = 'KnRgGcD4SM3J8MhwfYcW4aRPGwNFNPd47jUxa1MSwJktLGhdcs';
 
 exports.postOnTwitter = async (token, tokenSecret, tweetContent, cb) => {
 
+    //build the request object
     const client = new Twitter({
         consumer_key: TWITTER_APP_ID,
         consumer_secret: TWITTER_APP_SECRET,
@@ -14,8 +16,10 @@ exports.postOnTwitter = async (token, tokenSecret, tweetContent, cb) => {
 
     client.post('statuses/update', {status: tweetContent},  function(error, tweet, response) {
         if (error) console.log(error)
-        // console.log(tweet)
+        // remove the object
         delete this
+        
+        //handle the response
         cb(response)
     }).catch(error => cb(error));
       
