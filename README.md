@@ -2,7 +2,8 @@
 
 &emsp;A web application which features simultaneously post content to multiple social media sites. It gives you analytic and social media monitoring tools. It supports social network integration for Twitter, Facebook and Reddit.
 
-##### Video presentation: 
+##### [Video presentation](https://www.youtube.com/watch?v=FXMhdWJiLFk)
+
 
 See the platform in action [here](https://www.youtube.com/watch?v=FXMhdWJiLFk).
 
