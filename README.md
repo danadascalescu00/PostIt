@@ -66,16 +66,21 @@ In PostIt1.0v the platform allows you to post text content on multiple social ch
  &ensp; We balanced app speed against functionality and resolution, we also ensured that what is on screen is sufficiently detailed to make the user experience worthwhile.
  
  
- **4.** **Security**
+ **4.** **Security and compliance with GDPR STANDARDS**
  
  &ensp; Internet security is becoming an ever-incresing issue and the same applies for every application. With many applications storing 
  personal and sensitive information or credit and debit card details, security is an absolute must. What diffentiate PostIt App from all 
- other applications 
+ other applications is the fact our software does not store or processes personal data of users, and is fully compliant with the well-defined requirements.
  
  
- **5. Responsive Mobile App Design for Varying Screen Sizes**
+ **5.** **Responsive Mobile App Design for Varying Screen Sizes**
  
- **6. **
+ **6.** **API Suport for the most popular Social Media Platforms**
+ 
+ &ensp; Social media usage is a significant aspect of most of our lives. In fact, it is estimated that more than 2.5 billion users   
+ around the world rely on the various popular social media networking platforms to facilitate their interaction and connectivity with 
+ family, friends or other people, as well hundreds of businesses use social media to stay in touch with their clients or as .
+
 
 ## Running the tests
 
@@ -100,11 +105,6 @@ While minor changes were easily done directly on the live website, bigger change
 
 &emsp; When working in a local environment it is also the advantage of changes processing faster and not be reliant on any connectivity issues.
 
-4. **Time sensitivity content is easier to manage**
-
-
-
-
 
 ## Built With
 * **Adobe Illustrator** - The vector graphics editor developed used for the creation of Isometric design.
@@ -121,12 +121,5 @@ full OS on top of our host system and having certain essential resources emulate
 * **Stern Cristian David**
 * **Gălățan Alex Cristian**
 * **Dăscălescu Dana**
-
-See also the list of [contributors](https://github.com/danadascalescu00/PostIt) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 
 ##### Video presentation: 
