@@ -96,11 +96,7 @@ In PostIt1.0v the platform allows you to post text content on multiple social ch
 
 ## Deployment
 
-For deployment on the live system we used the cloud computing service Microsoft Azure.
-
-```
-https://postit.software/
-```
+For deployment on the live system we used the cloud computing service Microsoft Azure. You can access PostIt on this [link](https://postit.software/).
 
 ##### The advantages of deployment and the used of multiple environments in the stages of development the PostIt App.
 ___
