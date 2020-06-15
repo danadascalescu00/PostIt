@@ -57,6 +57,7 @@ module.exports = function(app, multiPassport) {
         res.redirect('/api/user');
     });
 
+    //user signup
     app.post('/api/signup',
     (req, res) => setCORSHeaders(res),
     multiPassport.authenticate('local-signup', {
@@ -65,6 +66,7 @@ module.exports = function(app, multiPassport) {
         failureFlash: true
     }));
 
+    //user login
     app.post('/api/login', (req, res, next) => {
       multiPassport.authenticate('local-login', (response) => {
         console.error("----LOGIN----")
@@ -99,6 +101,7 @@ module.exports = function(app, multiPassport) {
       })(req, res, next);
     });
 
+    //register
     app.post('/api/register', (req, res, next) => {
       multiPassport.authenticate('local-signup', (response) => {
         console.error("----REGISTER----")
@@ -122,7 +125,7 @@ module.exports = function(app, multiPassport) {
           return
         }
 
-        //everything ok, what's this?
+        //everything ok
 
         req.logIn(response.user, error => {
           const data = {
@@ -146,6 +149,7 @@ module.exports = function(app, multiPassport) {
       return 'logged in'
     }
 
+    //get user data
     app.get('/api/user', (req, res, next) => {
       multiPassport.authenticate('jwt', { session: false }, (err, user, info) => {
         if (err) {
@@ -153,11 +157,12 @@ module.exports = function(app, multiPassport) {
         }
         console.log('user:')
         console.log(user)
-        // const userId = JSON.parse(Object.values(req.sessionStore.sessions)[0]).passport.user
+
         if (info !== undefined) {
           console.log(info.message);
           res.status(401).send(info.message);
         } 
+        //serach for the user
         User.findOne({
           _id: user._id,
         }).then((userInfo) => {
@@ -276,6 +281,7 @@ module.exports = function(app, multiPassport) {
                 "pages_show_list", "publish_pages"]
     }));
 
+    //returning from facebook
     app.get('/return/facebook', 
     multiPassport.authenticate('facebook', { 
       failureRedirect: '/login' 
@@ -284,7 +290,7 @@ module.exports = function(app, multiPassport) {
     })
 
     
-    
+    //post on facebook
     app.post('/post/facebook', (req, res, next) => {
       multiPassport.authenticate('jwt', { session: false }, (err, user, info) => {
         if (err) {
@@ -316,12 +322,14 @@ module.exports = function(app, multiPassport) {
       multiPassport.authenticate('twitter')
     );
 
+    //return from twitter
     app.get('/return/twitter',
     multiPassport.authenticate('twitter', { failureRedirect: '/login' }),
     (req, res) => {
       res.redirect('http://localhost:3000/userProfile')
     });
 
+    //post on twitter
     app.post('/post/twitter', (req, res, next) => {
       multiPassport.authenticate('jwt', { session: false }, (err, user, info) => {
         if (err) {
@@ -367,6 +375,7 @@ module.exports = function(app, multiPassport) {
         })(req, res, next)
     })
   
+    //return from reddit
     app.get('/return/reddit',
     multiPassport.authenticate('reddit', {
       failureRedirect: '/login'
@@ -374,6 +383,7 @@ module.exports = function(app, multiPassport) {
       res.redirect('http://localhost:3000/userProfile');
     })
 
+    //post on reddit
     app.post('/post/reddit', 
     require('connect-ensure-login').ensureLoggedIn(),
     function(req, res) {     
