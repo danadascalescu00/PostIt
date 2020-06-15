@@ -43,7 +43,7 @@ $ npm start
 ## Table of contents
 * [About the project](#about-the-project)
 * [Features](#features)
-* [Running the tests](#running-the-tests)
+* [Automation tests](#automation-tests)
 * [Deployment](#deployment)
 * [Built With](#built-with)
 
@@ -95,7 +95,7 @@ future versions, we plan to add BI Service and ML Insights and the possibility t
  family, friends or other people, as well hundreds of businesses use social media to stay in touch with their clients.
 
 
-## Running the tests
+## [Automation tests](https://github.com/danadascalescu00/PostIt/blob/master/DockerIntegration/testing.js)
 
 
 ## Deployment
