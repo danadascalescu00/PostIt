@@ -9,10 +9,10 @@ and assure a stable connection before pushing any change to the pipeline.
 module.exports = (app, passport) => {
 
 
-	// 				automation test 1
-	// ********************************************
-	// checking a simple login for credential aquiring...
-	// reddit service
+    // 				automation test 1
+    // ********************************************
+    // checking a simple login for credential aquiring...
+    // reddit service
     app.get('/login/reddit', function(req, res, next){
         req.session.state = crypto.randomBytes(32).toString('hex');
         multiPassport.authenticate('reddit', {
@@ -34,9 +34,9 @@ module.exports = (app, passport) => {
 
 
     // 				automation test 2
-	// ********************************************
+    // ********************************************
     // checking a simple login for credential aquiring...
-	// faceobook service
+    // faceobook service
     app.post('/post/facebook', 
     require('connect-ensure-login').ensureLoggedIn(),
     function(req, res) {     
@@ -55,9 +55,9 @@ module.exports = (app, passport) => {
 
 
     // 				automation test 3
-	// ********************************************
+    // ********************************************
     // checking a simple login for credential aquiring...
-	// profiling service
+    // profiling service
     app.get('/profile',
     require('connect-ensure-login').ensureLoggedIn(),
     function(req, res){
@@ -70,9 +70,9 @@ module.exports = (app, passport) => {
 
 
     // 				automation test 4
-	// ********************************************
+    // ********************************************
     // validating authentication with empty credentials...
-	// IDP experience
+    // IDP experience
     app.post('/signup', multiPassport.authenticate('local-signup', {
         successRedirect: '/',
         failureRedirect: '/signup',
@@ -83,9 +83,9 @@ module.exports = (app, passport) => {
 
 
     // 				automation test 5
-	// ********************************************
+    // ********************************************
     // validating token removal on frontend after a user logout request...
-	// IDP experience
+    // IDP experience
     app.get('/logout',
     function(req, res){
         req.logout();
@@ -95,7 +95,7 @@ module.exports = (app, passport) => {
 
 
     // 				automation test 6
-	// ********************************************
+    // ********************************************
     // browser validation for UI experience with logging and client actions...
 	// UI/UX browser requests
 	const { Builder, By, Key, until } = require('selenium-webdriver');
