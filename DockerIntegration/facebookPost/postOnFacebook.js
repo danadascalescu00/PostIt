@@ -1,15 +1,19 @@
 const request = require('request')
 
+//our Facebook app ID and Secret, used to post
 const FACEBOOK_APP_ID = '614936155905378'
 const FACEBOOK_APP_SECRET = '0acfc566eacc72b4d28ae5c6340a079a'
 
 
 postMessageOnPage = (pageId, pageAccessToken, message, cb) => {
+    
+    //build the post url
     postURL = `https://graph.facebook.com/` +
         `${pageId}/feed?` +
         `message=${message}&` +
         `access_token=${pageAccessToken}`
 
+    //send the request and handle the response
     request.post(postURL, (error, res, body) => {
         try {
             console.log(body)
@@ -22,6 +26,7 @@ postMessageOnPage = (pageId, pageAccessToken, message, cb) => {
     })
 }
 
+//post on multiple pages
 exports.postMessageOnPages = async (pageList, message, cb) => {
 
     let posts = pageList.map(page => {
@@ -85,6 +90,7 @@ exchangeUserTokenForPageToken = (pageId, userAccessToken, cb) => {
     })
 }
 
+//get all pages of the user
 exports.getAllPages = (facebookUserId, accessToken, cb) => {
     pagesUrl = `https://graph.facebook.com/` +
         `v6.0/${facebookUserId}/accounts?` +
@@ -118,66 +124,3 @@ exports.run = (pageId, message, accessToken) => {
 exports.reloadToken = (shortLivedUserAccessToken) => {
     exchangeForLongLivedAccessToken(shortLivedUserAccessToken)
 }
-
-
-
-/*
-// const someProcedure = async n =>{
-    //     for (let i = 0; i < n; i++) {
-    //     const t = Math.random() * 1000
-    //     const x = await new Promise(resolve => setTimeout(resolve, t, i))
-    //     console.log (i, x)
-    //     }
-    //     return 'done'
-    // }
-
-    // someProcedure(10).then(x => console.log(x)) // => Promise
-    // 0 0
-    // 1 1
-    // 2 2
-    // 3 3
-    // 4 4
-    // 5 5
-    // 6 6
-    // 7 7
-    // 8 8
-    // 9 9
-    // done
-     // await new Promise(resolve => {
-            //     postMessageOnPage( page.pageId, 
-            //         page.pageAccessToken, message, (response) => {
-            //             resolve("posted")
-            //     })
-            // })
-    // const postSync = async () => {
-    //     let promises = []
-    //     for (page of pageList) {
-    //         console.log("REZOLVEEED")
-    //                     console.log(page.pageId, message)
-    //         promises.push(postMessageOnPage(
-    //             page.pageId, 
-    //             page.pageAccessToken, 
-    //             message
-    //         ))
-    //     }
-    //     return Promise.all(promises)
-    // }
-    // console.log("before func")
-    // const postSync = async () => {
-    //     for (page of pageList) {
-    //         console.log("before first for item")
-    //         await new Promise(resolve => {
-    //             console.log("inside promise")
-    //             postMessageOnPage(page.pageId, 
-    //                 page.pageAccessToken, message, (response) => {
-    //                     console.log("REZOLVEEED")
-    //                     console.log(page.pageId, message)
-                        
-    //             })
-    //             resolve("posted")
-    //             console.log("jumped over")
-    //         })
-    //     }
-    // }
-    // postSync().then(results => { return cb(results) }).catch(error => { return cb(null) })
-*/
