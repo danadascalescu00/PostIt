@@ -1,8 +1,8 @@
 var Twitter = require('twitter');
 
 //our Twitter app ID and Secret
-const TWITTER_APP_ID = 'my7Xr8xjZ1gJHUZWqganSOAw7';
-const TWITTER_APP_SECRET = 'KnRgGcD4SM3J8MhwfYcW4aRPGwNFNPd47jUxa1MSwJktLGhdcs';
+const TWITTER_APP_ID = '[YOUR_OWN_ID]';
+const TWITTER_APP_SECRET = '[YOUR_OWN_SECRET]';
 
 exports.postOnTwitter = async (token, tokenSecret, tweetContent, cb) => {
 

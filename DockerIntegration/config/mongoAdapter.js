@@ -10,7 +10,7 @@ module.exports = () => {
       'mongodb://mongo:27017/docker-node-mongo',
       { useNewUrlParser: true, useUnifiedTopology: true }
     )
-    .then(() => console.log('connected to mongodb')/*populateMongo.mockData()*/)
+    .then(() => console.log('connected to mongodb'))
     .catch(err => console.log(err));
 
     

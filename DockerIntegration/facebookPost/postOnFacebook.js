@@ -1,8 +1,8 @@
 const request = require('request')
 
 //our Facebook app ID and Secret, used to post
-const FACEBOOK_APP_ID = '614936155905378'
-const FACEBOOK_APP_SECRET = '0acfc566eacc72b4d28ae5c6340a079a'
+const FACEBOOK_APP_ID = '[YOUR_OWN_ID]'
+const FACEBOOK_APP_SECRET = '[YOUR_OWN_SECRET]'
 
 
 postMessageOnPage = (pageId, pageAccessToken, message, cb) => {

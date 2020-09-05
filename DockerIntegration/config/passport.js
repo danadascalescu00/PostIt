@@ -1,11 +1,11 @@
-const FACEBOOK_APP_ID = '614936155905378'
-const FACEBOOK_APP_SECRET = '0acfc566eacc72b4d28ae5c6340a079a'
+const FACEBOOK_APP_ID = '[YOUR_OWN_ID]'
+const FACEBOOK_APP_SECRET = '[YOUR_OWN_SECRET]'
 
-const REDDIT_APP_ID = '0ojMzPpxLoCkSA'
-const REDDIT_APP_SECRET = 'Su6skWQoqGy4k3a-S9bh93LXR_w'
+const REDDIT_APP_ID = '[YOUR_OWN_ID]'
+const REDDIT_APP_SECRET = '[YOUR_OWN_SECRET]'
 
-const TWITTER_APP_ID = 'my7Xr8xjZ1gJHUZWqganSOAw7';
-const TWITTER_APP_SECRET = 'KnRgGcD4SM3J8MhwfYcW4aRPGwNFNPd47jUxa1MSwJktLGhdcs';
+const TWITTER_APP_ID = '[YOUR_OWN_ID]';
+const TWITTER_APP_SECRET = '[YOUR_OWN_SECRET]';
 
 const JWTstrategy = require('passport-jwt').Strategy
 const ExtractJWT = require('passport-jwt').ExtractJwt
@@ -20,7 +20,6 @@ const User = require('../models/User')
 
 const facebookPost = require('../facebookPost/postOnFacebook')
 
-/////////////
 function formatUsername(username){
     //usernames are not case sensitive, lower it
     formattedUsername = username.toLowerCase()
@@ -28,13 +27,13 @@ function formatUsername(username){
     return formattedUsername
 }
 
-//creates the response, assuming success
+// creates the response, assuming success
 function createResponse(){
     resp = {success: true}
     return resp
 }
 
-//sets the error message
+// sets the error message
 function setResponseError(resp, err, errcode){
     if (!errcode){
         errcode = "err_unknown"
@@ -43,7 +42,6 @@ function setResponseError(resp, err, errcode){
     resp.message = err
     resp.errorcode = errcode
 }
-/////////////
 
 
 module.exports = function(multiPassport) {
