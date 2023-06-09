@@ -1,6 +1,6 @@
 # PostIt 
 
-Welcome to PostIt, the final project for the Software Engineering (SE) class in the second year of Bachelor studies at FMI Unibuc. PostIt is a web application designed to streamline the process of posting content to multiple social media sites simultaneously. It supports social network integration for Twitter, Facebook and Reddit.
+Welcome to PostIt, the final project for the Software Development Methods class in the second year of Bachelor studies at FMI Unibuc. PostIt is a web application designed to streamline the process of posting content to multiple social media sites simultaneously. It supports social network integration for Twitter, Facebook and Reddit.
 
 With PostIt, you no longer have to log in to each social media platform individually to share your content. Instead, you can use our platform to post your updates, articles, or any other content to Twitter, Facebook, and Reddit with just a few clicks.
 
